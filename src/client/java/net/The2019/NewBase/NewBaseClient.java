@@ -35,7 +35,7 @@ public class NewBaseClient implements ClientModInitializer {
 
 		//generic
 		Placer.place();
-		//TridentHelper.tridentHelper();
+		TridentHelper.tridentHelper();
 
 		//waypoints
 		//Waypoints.init();
