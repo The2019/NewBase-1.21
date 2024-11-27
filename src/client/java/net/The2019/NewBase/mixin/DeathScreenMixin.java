@@ -24,7 +24,7 @@ public class DeathScreenMixin {
 
     @Inject(at = @At("TAIL"), method = "<init>")
     private void constructor(Text message, boolean isHardcore, CallbackInfo ci) {
-       if(readModule(deathcoords)) {
+        if(readModule(deathcoords)) {
            MinecraftClient minecraftClient = MinecraftClient.getInstance();
            Vec3d pos = minecraftClient.player.getPos();
            Identifier dimensionType = minecraftClient.world.getRegistryKey().getValue();
@@ -39,7 +39,7 @@ public class DeathScreenMixin {
            deathCoordsMessage = String.format("You died at X: %.1f, Y: %.1f, Z: %.1f in the %s.", pos.x, pos.y, pos.z, dimension);
            MutableText deathCoordsText = Text.literal(deathCoordsMessage);
            minecraftClient.player.sendMessage(deathCoordsText);
-       }
+        }
     }
 
     @Inject(method = "render", at = @At("TAIL"))

@@ -21,6 +21,9 @@ public final class ModuleConfig {
 
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
+    // Cached configuration in memory
+    private static JsonObject cachedConfig;
+
     public static void init() {
         if (!configDir.exists()) configDir.mkdirs();
         if (!configFile.exists()) {
@@ -30,65 +33,87 @@ public final class ModuleConfig {
                     // The file is empty, write default values
                     writeDefaultValues();
                 }
-
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
+
+        // Load the configuration into the cache
+        reloadConfig();
     }
 
-    public static boolean readModule(String module){
-        try (FileReader reader = new FileReader(configFile)) {
-            JsonObject json = gson.fromJson(reader, JsonObject.class);
-            if (json != null && json.has(module)) {
-                return json.get(module).getAsBoolean();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    /**
+     * Reads the value of a module from the cached configuration.
+     * If the module is not found, it defaults to `true`.
+     */
+    public static boolean readModule(String module) {
+        if (cachedConfig != null && cachedConfig.has(module)) {
+            return cachedConfig.get(module).getAsBoolean();
         }
         return true;
     }
 
-
+    /**
+     * Updates the module state in the cached configuration and writes it to the file.
+     */
     public static void saveModuleState(String module, boolean state) {
-        JsonObject json = new JsonObject();
-
-        try (FileReader reader = new FileReader(configFile)) {
-            json = gson.fromJson(reader, JsonObject.class);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (cachedConfig == null) {
+            cachedConfig = new JsonObject();
         }
 
-        json.addProperty(module, state);
+        // Update the cache
+        cachedConfig.addProperty(module, state);
 
+        // Write the updated configuration to the file
+        saveConfigToFile();
+    }
+
+    /**
+     * Reloads the configuration from the file into the cache.
+     */
+    public static void reloadConfig() {
+        try (FileReader reader = new FileReader(configFile)) {
+            cachedConfig = gson.fromJson(reader, JsonObject.class);
+            if (cachedConfig == null) {
+                cachedConfig = new JsonObject(); // If the file is empty or invalid
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            cachedConfig = new JsonObject(); // Default to an empty configuration on error
+        }
+    }
+
+    /**
+     * Writes the current cached configuration to the file.
+     */
+    private static void saveConfigToFile() {
         try (FileWriter writer = new FileWriter(configFile)) {
-            gson.toJson(json, writer);
+            gson.toJson(cachedConfig, writer);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Writes default values to the configuration file.
+     */
     private static void writeDefaultValues() {
-        JsonObject json = new JsonObject();
+        cachedConfig = new JsonObject();
 
         // Add default values here
-        json.addProperty(coordinateDisplay, true);
-        json.addProperty(biomeDisplay, true);
-        json.addProperty(fpsDisplay, true);
-        json.addProperty(beehiveRender, false);
-        json.addProperty(fullBrightRender, true);
-        json.addProperty(placer, false);
-        json.addProperty(tridentHelper, true);
-        json.addProperty(deathcoords, true);
-        json.addProperty(noFog, true);
-        json.addProperty(toggleCamera, true);
-        json.addProperty(armorHud, true);
+        cachedConfig.addProperty(ModuleStates.coordinateDisplay, true);
+        cachedConfig.addProperty(ModuleStates.biomeDisplay, true);
+        cachedConfig.addProperty(ModuleStates.fpsDisplay, true);
+        cachedConfig.addProperty(ModuleStates.beehiveRender, false);
+        cachedConfig.addProperty(ModuleStates.fullBrightRender, true);
+        cachedConfig.addProperty(ModuleStates.placer, false);
+        cachedConfig.addProperty(ModuleStates.tridentHelper, true);
+        cachedConfig.addProperty(ModuleStates.deathcoords, true);
+        cachedConfig.addProperty(ModuleStates.noFog, true);
+        cachedConfig.addProperty(ModuleStates.toggleCamera, true);
+        cachedConfig.addProperty(ModuleStates.armorHud, true);
 
-
-        try (FileWriter writer = new FileWriter(configFile)) {
-            gson.toJson(json, writer);
-        } catch (IOException e) {
-            e.printStackTrace();
+        // Save to file
+        saveConfigToFile();
         }
-    }
 }

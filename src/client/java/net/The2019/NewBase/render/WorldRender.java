@@ -4,6 +4,8 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
@@ -101,5 +103,25 @@ public class WorldRender {
         RenderSystem.enableCull();
         RenderSystem.disableDepthTest();
         RenderSystem.depthFunc(GL11.GL_LEQUAL);
+
+    }
+
+    public static void drawString(MatrixStack matrices, VertexConsumerProvider vertexConsumers, String string, double x, double y, double z, int color, float size, boolean center, float offset, boolean visibleThroughObjects) {
+        MinecraftClient minecraftClient = MinecraftClient.getInstance();
+        Camera camera = minecraftClient.gameRenderer.getCamera();
+        if (camera.isReady() && minecraftClient.getEntityRenderDispatcher().gameOptions != null) {
+            TextRenderer textRenderer = minecraftClient.textRenderer;
+            double d = camera.getPos().x;
+            double e = camera.getPos().y;
+            double f = camera.getPos().z;
+            matrices.push();
+            matrices.translate((float)(x - d), (float)(y - e) + 0.07F, (float)(z - f));
+            matrices.multiply(camera.getRotation());
+            matrices.scale(size, -size, size);
+            float g = center ? (float)(-textRenderer.getWidth(string)) / 2.0F : 0.0F;
+            g -= offset / size;
+            textRenderer.draw(string, g, 0.0F, color, false, matrices.peek().getPositionMatrix(), vertexConsumers, visibleThroughObjects ? TextRenderer.TextLayerType.SEE_THROUGH : TextRenderer.TextLayerType.NORMAL, 0, 15728880);
+            matrices.pop();
+        }
     }
 }

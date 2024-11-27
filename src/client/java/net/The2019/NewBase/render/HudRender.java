@@ -40,10 +40,10 @@ public class HudRender {
             displayElements.get(2).setActive(readModule(fpsDisplay));
 
             for (DisplayElements element : displayElements) {
-                if (element.isActive()) {
+                    if (element.isActive()) {
                     drawContext.drawText(mc.textRenderer, element.getText(), 10, yOffset, element.getColor(), false);
                     yOffset += 10; // Adjust the Y position for the next element
-                }
+            }
             }
         });
     }
