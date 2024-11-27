@@ -12,7 +12,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static net.The2019.NewBase.NewBaseClient.MOD_ID;
-import static net.The2019.NewBase.config.ModuleStates.*;
 
 public final class ModuleConfig {
 
@@ -21,7 +20,6 @@ public final class ModuleConfig {
 
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-    // Cached configuration in memory
     private static JsonObject cachedConfig;
 
     public static void init() {
@@ -42,10 +40,6 @@ public final class ModuleConfig {
         reloadConfig();
     }
 
-    /**
-     * Reads the value of a module from the cached configuration.
-     * If the module is not found, it defaults to `true`.
-     */
     public static boolean readModule(String module) {
         if (cachedConfig != null && cachedConfig.has(module)) {
             return cachedConfig.get(module).getAsBoolean();
@@ -53,9 +47,6 @@ public final class ModuleConfig {
         return true;
     }
 
-    /**
-     * Updates the module state in the cached configuration and writes it to the file.
-     */
     public static void saveModuleState(String module, boolean state) {
         if (cachedConfig == null) {
             cachedConfig = new JsonObject();
@@ -68,9 +59,6 @@ public final class ModuleConfig {
         saveConfigToFile();
     }
 
-    /**
-     * Reloads the configuration from the file into the cache.
-     */
     public static void reloadConfig() {
         try (FileReader reader = new FileReader(configFile)) {
             cachedConfig = gson.fromJson(reader, JsonObject.class);
@@ -83,9 +71,6 @@ public final class ModuleConfig {
         }
     }
 
-    /**
-     * Writes the current cached configuration to the file.
-     */
     private static void saveConfigToFile() {
         try (FileWriter writer = new FileWriter(configFile)) {
             gson.toJson(cachedConfig, writer);
@@ -94,9 +79,6 @@ public final class ModuleConfig {
         }
     }
 
-    /**
-     * Writes default values to the configuration file.
-     */
     private static void writeDefaultValues() {
         cachedConfig = new JsonObject();
 
