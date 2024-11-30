@@ -8,9 +8,6 @@ import net.minecraft.util.math.BlockPos;
 import java.awt.*;
 import java.util.HashMap;
 
-import static net.The2019.NewBase.render.waypoints.WaypointRender.renderTextOnBlock;
-import static net.The2019.NewBase.render.waypoints.WaypointRender.renderWaypoint;
-
 public class Waypoints {
     public static HashMap<BlockPos, String> waypoints = new HashMap<>();
 

@@ -28,7 +28,6 @@ public final class ModuleConfig {
             try {
                 configFile.createNewFile();
                 if (Files.size(configFile.toPath()) == 0) {
-                    // The file is empty, write default values
                     writeDefaultValues();
                 }
             } catch (IOException e) {
@@ -36,7 +35,6 @@ public final class ModuleConfig {
             }
         }
 
-        // Load the configuration into the cache
         reloadConfig();
     }
 
@@ -52,10 +50,8 @@ public final class ModuleConfig {
             cachedConfig = new JsonObject();
         }
 
-        // Update the cache
         cachedConfig.addProperty(module, state);
 
-        // Write the updated configuration to the file
         saveConfigToFile();
     }
 
@@ -63,11 +59,11 @@ public final class ModuleConfig {
         try (FileReader reader = new FileReader(configFile)) {
             cachedConfig = gson.fromJson(reader, JsonObject.class);
             if (cachedConfig == null) {
-                cachedConfig = new JsonObject(); // If the file is empty or invalid
+                cachedConfig = new JsonObject();
             }
         } catch (IOException e) {
             e.printStackTrace();
-            cachedConfig = new JsonObject(); // Default to an empty configuration on error
+            cachedConfig = new JsonObject();
         }
     }
 
@@ -82,7 +78,6 @@ public final class ModuleConfig {
     private static void writeDefaultValues() {
         cachedConfig = new JsonObject();
 
-        // Add default values here
         cachedConfig.addProperty(ModuleStates.coordinateDisplay, true);
         cachedConfig.addProperty(ModuleStates.biomeDisplay, true);
         cachedConfig.addProperty(ModuleStates.fpsDisplay, true);
@@ -94,8 +89,9 @@ public final class ModuleConfig {
         cachedConfig.addProperty(ModuleStates.noFog, true);
         cachedConfig.addProperty(ModuleStates.toggleCamera, true);
         cachedConfig.addProperty(ModuleStates.armorHud, true);
+        cachedConfig.addProperty(ModuleStates.pitchYaw, true);
+        cachedConfig.addProperty(ModuleStates.dayCount, true);
 
-        // Save to file
         saveConfigToFile();
-        }
+    }
 }

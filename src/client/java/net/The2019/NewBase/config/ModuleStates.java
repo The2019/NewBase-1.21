@@ -5,6 +5,8 @@ public class ModuleStates {
     public static String coordinateDisplay = "coordinatedisplay";
     public static String biomeDisplay = "biomedisplay";
     public static String fpsDisplay = "fpsdisplay";
+    public static String pitchYaw = "pitchyaw";
+    public static String dayCount = "daycount";
 
     //Render
     public static String beehiveRender = "beehiverender";

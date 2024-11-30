@@ -1,16 +1,13 @@
 package net.The2019.NewBase.render;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.The2019.NewBase.features.hud.BiomeDisplay;
-import net.The2019.NewBase.features.hud.CoordinatesDisplay;
-import net.The2019.NewBase.features.hud.FpsDisplay;
+import net.The2019.NewBase.features.hud.*;
 import net.The2019.NewBase.utils.DisplayElements;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 import java.awt.*;
@@ -22,6 +19,7 @@ import static net.The2019.NewBase.config.ModuleConfig.readModule;
 import static net.The2019.NewBase.config.ModuleStates.*;
 
 public class HudRender {
+
     private static final MinecraftClient mc = MinecraftClient.getInstance();
     private static final List<DisplayElements> displayElements = new ArrayList<>();
     private static final Identifier slot = Identifier.of(MOD_ID, "textures/gui/slot_22x30.png");
@@ -31,6 +29,8 @@ public class HudRender {
         displayElements.add(new DisplayElements("Coordinates", Color.GREEN.getRGB(), CoordinatesDisplay::getPositionText));
         displayElements.add(new DisplayElements("Biome", Color.GREEN.getRGB(), BiomeDisplay::getBiomeText));
         displayElements.add(new DisplayElements("Fps", Color.GREEN.getRGB(), FpsDisplay::getFpsText));
+        displayElements.add(new DisplayElements("Pitch Yaw", Color.GREEN.getRGB(), PitchYawDisplay::getPitchYaw));
+        displayElements.add(new DisplayElements("Day Count", Color.GREEN.getRGB(), DayCount::getDays));
 
         HudRenderCallback.EVENT.register((drawContext, tickDelta) -> {
             int yOffset = 10;
@@ -38,6 +38,8 @@ public class HudRender {
             displayElements.get(0).setActive(readModule(coordinateDisplay));
             displayElements.get(1).setActive(readModule(biomeDisplay));
             displayElements.get(2).setActive(readModule(fpsDisplay));
+            displayElements.get(3).setActive(readModule(pitchYaw));
+            displayElements.get(4).setActive(readModule(dayCount));
 
             for (DisplayElements element : displayElements) {
                     if (element.isActive()) {
@@ -68,6 +70,7 @@ public class HudRender {
                 int barWidth = (int) (13 * ((double) durability / maxDurability));
 
                 int barColor;
+
                 if (durability <= maxDurability * 0.15) {
                     barColor = Color.red.getRGB();
                 } else if (durability <= maxDurability * 0.25) {
@@ -93,6 +96,4 @@ public class HudRender {
             drawContext.getMatrices().pop();
         }
     }
-
-
 }

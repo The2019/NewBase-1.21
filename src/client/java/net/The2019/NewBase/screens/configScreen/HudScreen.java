@@ -17,9 +17,12 @@ import static net.The2019.NewBase.config.ModuleStates.*;
 public class HudScreen extends Screen {
     private final Screen parent;
     private final GameOptions settings;
-    private static int x = 20;
-    private static int y = 50;
+    private static final int x = 20;
+    private static int y = 30;
     private static final MinecraftClient mc = MinecraftClient.getInstance();
+    private static final int buttonWidth = 200;
+    private static final int buttonHeight = 20;
+    private static final int spacing = 30;
 
     public HudScreen(Screen parent, GameOptions settings) {
         super(Text.translatable("newbase.hudscreen.name"));
@@ -32,29 +35,23 @@ public class HudScreen extends Screen {
 
         this.addDrawableChild(new ButtonWidget.Builder(Text.translatable("newbase.hudscreen.back"), button -> {mc.setScreen(new ConfigScreen(mc.currentScreen, mc.options));}).dimensions(17, 20, 100,20).build());
 
-        //Coordinates
-        this.addDrawable(new TextWidget(x, y, 500, 20, Text.translatable("newbase.hudscreen.togglecoordinatesdisplay"), mc.textRenderer).alignLeft());
-        this.addDrawableChild(new ButtonWidget.Builder(toggleModule(coordinateDisplay), button -> {
-            saveModuleState(coordinateDisplay, !readModule(coordinateDisplay));
+        y = 30;
+
+        addContent("togglecoordinatesdisplay", coordinateDisplay, x, y += spacing, buttonWidth, buttonHeight);
+        addContent("togglebiomedisplay", biomeDisplay, x, y += spacing, buttonWidth, buttonHeight);
+        addContent("togglefpsdisplay", fpsDisplay, x, y += spacing, buttonWidth, buttonHeight);
+        addContent("toggelpitchyaw", pitchYaw, x, y += spacing, buttonWidth, buttonHeight);
+        addContent("toggeldaycount", dayCount, x, y += spacing, buttonWidth, buttonHeight);
+
+    }
+
+    private void addContent(String key, String module, int x, int y, int buttonWidth, int buttonHeight) {
+        this.addDrawable(new TextWidget(x, y, 500, 20, Text.translatable("newbase.hudscreen." + key), mc.textRenderer).alignLeft());
+        this.addDrawableChild(new ButtonWidget.Builder(toggleModule(module), button -> {
+            saveModuleState(module, !readModule(module));
             mc.setScreen(new HudScreen(mc.currentScreen, mc.options));
-
-        }).tooltip(Tooltip.of(Text.translatable("newbase.hudscreen.tooltip"))).dimensions(this.width - 220, y, 200, 20).build());
-
-        //Biome
-        this.addDrawable(new TextWidget(x, y+30, 500, 20, Text.translatable("newbase.hudscreen.togglebiomedisplay"), mc.textRenderer).alignLeft());
-        this.addDrawableChild(new ButtonWidget.Builder(toggleModule(biomeDisplay), button -> {
-            saveModuleState(biomeDisplay, !readModule(biomeDisplay));
-            mc.setScreen(new HudScreen(mc.currentScreen, mc.options));
-
-        }).tooltip(Tooltip.of(Text.translatable("newbase.hudscreen.tooltip"))).dimensions(this.width - 220, y+30, 200, 20).build());
-
-        //Fps
-        this.addDrawable(new TextWidget(x, y+60, 500, 20, Text.translatable("newbase.hudscreen.togglefpsdisplay"), mc.textRenderer).alignLeft());
-        this.addDrawableChild(new ButtonWidget.Builder(toggleModule(fpsDisplay), button -> {
-            saveModuleState(fpsDisplay, !readModule(fpsDisplay));
-            mc.setScreen(new HudScreen(mc.currentScreen, mc.options));
-
-        }).tooltip(Tooltip.of(Text.translatable("newbase.hudscreen.tooltip"))).dimensions(this.width - 220, y+60, 200, 20).build());
+        }).tooltip(Tooltip.of(Text.translatable("newbase.hudscreen.tooltip")))
+                .dimensions(this.width - 220, y, buttonWidth, buttonHeight).build());
     }
 
     private static Text toggleModule(String module){

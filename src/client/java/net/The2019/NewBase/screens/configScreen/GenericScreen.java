@@ -17,11 +17,14 @@ public class GenericScreen extends Screen {
     private final Screen parent;
     private final GameOptions settings;
     private static int x = 20;
-    private static int y = 50;
+    private static int y = 30;
     private static final MinecraftClient mc = MinecraftClient.getInstance();
+    private static final int buttonWidth = 200;
+    private static final int buttonHeight = 20;
+    private static final int spacing = 30;
 
     public GenericScreen(Screen parent, GameOptions settings) {
-        super(Text.translatable("newbase.genericscreen.name"));
+        super(Text.translatable("newbase.gene1ricscreen.name"));
         this.parent = parent;
         this.settings = settings;
     }
@@ -31,29 +34,22 @@ public class GenericScreen extends Screen {
 
         this.addDrawableChild(new ButtonWidget.Builder(Text.translatable("newbase.renderscreen.back"), button -> {mc.setScreen(new ConfigScreen(mc.currentScreen, mc.options));}).dimensions(17, 20, 100,20).build());
 
-        //Placer
-        this.addDrawable(new TextWidget(x, y, 500, 20, Text.translatable("newbase.genericscreen.placer"), mc.textRenderer).alignLeft());
-        this.addDrawableChild(new ButtonWidget.Builder(toggleModule(placer), button -> {
-            saveModuleState(placer, !readModule(placer));
-            mc.setScreen(new GenericScreen(mc.currentScreen, mc.options));
-        }).tooltip(Tooltip.of(Text.translatable("newbase.hudscreen.tooltip"))).dimensions(this.width - 220, y, 200, 20).build());
+        y = 30;
 
-        //Trident Helper
-        this.addDrawable(new TextWidget(x, y+30, 500, 20, Text.translatable("newbase.genericscreen.tridenthelper"), mc.textRenderer).alignLeft());
-        this.addDrawableChild(new ButtonWidget.Builder(toggleModule(tridentHelper), button -> {
-            saveModuleState(tridentHelper, !readModule(tridentHelper));
-            mc.setScreen(new GenericScreen(mc.currentScreen, mc.options));
-        }).tooltip(Tooltip.of(Text.translatable("newbase.hudscreen.tooltip"))).dimensions(this.width - 220, y+30, 200, 20).build());
-
-        //Death Coords
-        this.addDrawable(new TextWidget(x, y+60, 500, 20, Text.translatable("newbase.genericscreen.deathcorrds"), mc.textRenderer).alignLeft());
-        this.addDrawableChild(new ButtonWidget.Builder(toggleModule(deathcoords), button -> {
-            saveModuleState(deathcoords, !readModule(deathcoords));
-            mc.setScreen(new GenericScreen(mc.currentScreen, mc.options));
-        }).tooltip(Tooltip.of(Text.translatable("newbase.hudscreen.tooltip"))).dimensions(this.width - 220, y+60, 200, 20).build());
+        addContent("placer", placer, x, y += spacing, buttonWidth, buttonHeight);
+        addContent("tridenthelper", tridentHelper, x, y += spacing, buttonWidth, buttonHeight);
+        addContent("deathcorrds", deathcoords, x, y += spacing, buttonWidth, buttonHeight);
 
     }
 
+    private void addContent(String key, String module, int x, int y, int buttonWidth, int buttonHeight) {
+        this.addDrawable(new TextWidget(x, y, 500, 20, Text.translatable("newbase.genericscreen." + key), mc.textRenderer).alignLeft());
+        this.addDrawableChild(new ButtonWidget.Builder(toggleModule(module), button -> {
+            saveModuleState(module, !readModule(module));
+            mc.setScreen(new HudScreen(mc.currentScreen, mc.options));
+        }).tooltip(Tooltip.of(Text.translatable("newbase.hudscreen.tooltip")))
+                .dimensions(this.width - 220, y, buttonWidth, buttonHeight).build());
+    }
 
     private static Text toggleModule(String module){
         if(readModule(module)){

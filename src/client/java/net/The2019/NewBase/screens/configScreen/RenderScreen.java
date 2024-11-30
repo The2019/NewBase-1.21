@@ -17,8 +17,11 @@ public class RenderScreen extends Screen {
     private final Screen parent;
     private final GameOptions settings;
     private static int x = 20;
-    private static int y = 50;
+    private static int y = 30;
     private static final MinecraftClient mc = MinecraftClient.getInstance();
+    private static final int buttonWidth = 200;
+    private static final int buttonHeight = 20;
+    private static final int spacing = 30;
 
     public RenderScreen(Screen parent, GameOptions settings) {
         super(Text.translatable("newbase.hudscreen.name"));
@@ -31,33 +34,22 @@ public class RenderScreen extends Screen {
 
         this.addDrawableChild(new ButtonWidget.Builder(Text.translatable("newbase.renderscreen.back"), button -> {mc.setScreen(new ConfigScreen(mc.currentScreen, mc.options));}).dimensions(17, 20, 100,20).build());
 
-        //Beehive Helper
-        this.addDrawable(new TextWidget(x, y, 500, 20, Text.translatable("newbase.renderscreen.beehiverender"), mc.textRenderer).alignLeft());
-        this.addDrawableChild(new ButtonWidget.Builder(toggleModule(beehiveRender), button -> {
-            saveModuleState(beehiveRender, !readModule(beehiveRender));
-            mc.setScreen(new RenderScreen(mc.currentScreen, mc.options));
-        }).tooltip(Tooltip.of(Text.translatable("newbase.hudscreen.tooltip"))).dimensions(this.width - 220, y, 200, 20).build());
+        y = 30;
 
-        //Coordinates
-        this.addDrawable(new TextWidget(x, y+30, 500, 20, Text.translatable("newbase.renderscreen.fullbrightrender"), mc.textRenderer).alignLeft());
-        this.addDrawableChild(new ButtonWidget.Builder(toggleModule(fullBrightRender), button -> {
-            saveModuleState(fullBrightRender, !readModule(fullBrightRender));
-            mc.setScreen(new RenderScreen(mc.currentScreen, mc.options));
-        }).tooltip(Tooltip.of(Text.translatable("newbase.hudscreen.tooltip"))).dimensions(this.width - 220, y+30, 200, 20).build());
+        addContent("beehiverender", beehiveRender, x, y += spacing, buttonWidth, buttonHeight);
+        addContent("fullbrightrender", fullBrightRender, x, y += spacing, buttonWidth, buttonHeight);
+        addContent("nofog", noFog, x, y += spacing, buttonWidth, buttonHeight);
+        addContent("armorHud", armorHud, x, y += spacing, buttonWidth, buttonHeight);
 
-        //NoFog
-        this.addDrawable(new TextWidget(x, y+60, 500, 20, Text.translatable("newbase.renderscreen.nofog"), mc.textRenderer).alignLeft());
-        this.addDrawableChild(new ButtonWidget.Builder(toggleModule(noFog), button -> {
-            saveModuleState(noFog, !readModule(noFog));
-            mc.setScreen(new RenderScreen(mc.currentScreen, mc.options));
-        }).tooltip(Tooltip.of(Text.translatable("newbase.hudscreen.tooltip"))).dimensions(this.width - 220, y+60, 200, 20).build());
+    }
 
-        //ArmorHud
-        this.addDrawable(new TextWidget(x, y+90, 500, 20, Text.translatable("newbase.renderscreen.armorHud"), mc.textRenderer).alignLeft());
-        this.addDrawableChild(new ButtonWidget.Builder(toggleModule(armorHud), button -> {
-            saveModuleState(armorHud, !readModule(armorHud));
-            mc.setScreen(new RenderScreen(mc.currentScreen, mc.options));
-        }).tooltip(Tooltip.of(Text.translatable("newbase.hudscreen.tooltip"))).dimensions(this.width - 220, y+90, 200, 20).build());
+    private void addContent(String key, String module, int x, int y, int buttonWidth, int buttonHeight) {
+        this.addDrawable(new TextWidget(x, y, 500, 20, Text.translatable("newbase.renderscreen." + key), mc.textRenderer).alignLeft());
+        this.addDrawableChild(new ButtonWidget.Builder(toggleModule(module), button -> {
+            saveModuleState(module, !readModule(module));
+            mc.setScreen(new HudScreen(mc.currentScreen, mc.options));
+        }).tooltip(Tooltip.of(Text.translatable("newbase.hudscreen.tooltip")))
+                .dimensions(this.width - 220, y, buttonWidth, buttonHeight).build());
     }
 
 
