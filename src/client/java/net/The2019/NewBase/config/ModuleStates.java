@@ -7,6 +7,7 @@ public class ModuleStates {
     public static String fpsDisplay = "fpsdisplay";
     public static String pitchYaw = "pitchyaw";
     public static String dayCount = "daycount";
+    public static String realLiveTime = "reallivetime";
 
     //Render
     public static String beehiveRender = "beehiverender";

@@ -19,6 +19,7 @@
   "newbase.hudscreen.togglefpsdisplay": "Toggle Fps Display",
   "newbase.hudscreen.toggelpitchyaw": "Toggle Pitch Yaw Display",
   "newbase.hudscreen.toggeldaycount": "Toggle Day Count Display",
+  "newbase.hudscreen.toggelreallivetime": "Toggle Time Display",
   "newbase.hudscreen.enabled": "§aEnabled",
   "newbase.hudscreen.disabled": "§4Disabled",
   "newbase.hudscreen.tooltip": "Press to Toggle",

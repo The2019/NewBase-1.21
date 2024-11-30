@@ -31,6 +31,7 @@ public class HudRender {
         displayElements.add(new DisplayElements("Fps", Color.GREEN.getRGB(), FpsDisplay::getFpsText));
         displayElements.add(new DisplayElements("Pitch Yaw", Color.GREEN.getRGB(), PitchYawDisplay::getPitchYaw));
         displayElements.add(new DisplayElements("Day Count", Color.GREEN.getRGB(), DayCount::getDays));
+        displayElements.add(new DisplayElements("Real Live Time", Color.GREEN.getRGB(), RealTImeDisplay::getRealWorldTime));
 
         HudRenderCallback.EVENT.register((drawContext, tickDelta) -> {
             int yOffset = 10;
@@ -40,6 +41,7 @@ public class HudRender {
             displayElements.get(2).setActive(readModule(fpsDisplay));
             displayElements.get(3).setActive(readModule(pitchYaw));
             displayElements.get(4).setActive(readModule(dayCount));
+            displayElements.get(5).setActive(readModule(realLiveTime));
 
             for (DisplayElements element : displayElements) {
                     if (element.isActive()) {

@@ -42,6 +42,7 @@ public class HudScreen extends Screen {
         addContent("togglefpsdisplay", fpsDisplay, x, y += spacing, buttonWidth, buttonHeight);
         addContent("toggelpitchyaw", pitchYaw, x, y += spacing, buttonWidth, buttonHeight);
         addContent("toggeldaycount", dayCount, x, y += spacing, buttonWidth, buttonHeight);
+        addContent("toggelreallivetime", realLiveTime, x, y += spacing, buttonWidth, buttonHeight);
 
     }
 
