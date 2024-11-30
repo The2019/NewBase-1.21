@@ -1,5 +1,5 @@
 
-![Logo](https://github.com/The2019/NewBase-1.21/blob/main/mod_icon.png)
+<img src="https://github.com/The2019/NewBase-1.21/blob/main/mod_icon.png" alt="Logo" width="200" height="200">
 
 
 # NewBase
