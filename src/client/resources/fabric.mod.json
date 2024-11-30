@@ -3,7 +3,7 @@
 	"id": "newbase",
 	"version": "${version}",
 	"name": "NewBase",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A client sided utility mod for Minecraft 1.21 for fabric.",
 	"authors": [
 		"The2019"
 	],
