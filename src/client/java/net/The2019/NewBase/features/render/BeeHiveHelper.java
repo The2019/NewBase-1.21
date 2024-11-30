@@ -1,5 +1,6 @@
 package net.The2019.NewBase.features.render;
 
+import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.minecraft.block.entity.BeehiveBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
@@ -19,18 +20,20 @@ public class BeeHiveHelper {
     private static final MinecraftClient mc = MinecraftClient.getInstance();
 
 
-    public static void register() {
+    public static void highlightBeeHives() {
         WorldRenderEvents.END.register(context -> {
-            if(readModule(beehiveRender)) {
-                if (mc.player != null) {
-                    for (BlockEntity blockEntity : getBlockEntities().collect(Collectors.toCollection(ArrayList::new))) {
-                        if (blockEntity instanceof BeehiveBlockEntity) {
-                            BlockPos blockEntityPos = blockEntity.getPos();
-                            drawBox(context.matrixStack(), context.consumers(), blockEntityPos, blockEntityPos, 1.0f, 1.0f, 1.0f, 1.0f);
-                        }
-                    }
-                }
+            if(readModule(beehiveRender) && (mc.player != null)) {
+                renderOutlines(context);
             }
         });
+    }
+
+    private static void renderOutlines(WorldRenderContext context){
+        for (BlockEntity blockEntity : getBlockEntities().collect(Collectors.toCollection(ArrayList::new))) {
+            if (blockEntity instanceof BeehiveBlockEntity) {
+                BlockPos blockEntityPos = blockEntity.getPos();
+                drawBox(context.matrixStack(), context.consumers(), blockEntityPos, blockEntityPos, 1.0f, 1.0f, 1.0f, 1.0f);
+            }
+        }
     }
 }

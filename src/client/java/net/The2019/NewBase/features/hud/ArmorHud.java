@@ -20,7 +20,7 @@ public class ArmorHud {
     private static final float scale = 1.5f;
 
 
-    public static void renderArmorInHud(){
+    public static void renderArmorHud(){
 
         HudRenderCallback.EVENT.register((drawContext, tickCounter) -> {
             if (mc.player != null && readModule(armorHud)){

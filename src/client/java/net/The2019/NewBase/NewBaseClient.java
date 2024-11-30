@@ -7,14 +7,10 @@ import net.The2019.NewBase.features.hud.ArmorHud;
 import net.The2019.NewBase.features.render.BeeHiveHelper;
 import net.The2019.NewBase.features.render.NoFog;
 import net.The2019.NewBase.features.render.ToggleCamera;
-import net.The2019.NewBase.features.waypoints.Waypoints;
 import net.The2019.NewBase.render.HudRender;
-import net.The2019.NewBase.render.WorldRender;
 import net.The2019.NewBase.utils.InitKeyBindings;
 import net.The2019.NewBase.utils.PermissionLevel;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
-import net.minecraft.client.MinecraftClient;
 
 public class NewBaseClient implements ClientModInitializer {
 
@@ -25,15 +21,15 @@ public class NewBaseClient implements ClientModInitializer {
 		//Utils
 		PermissionLevel.initAllowedPlayers();
 		ModuleConfig.init();
-		InitKeyBindings.initKeys();
+		InitKeyBindings.initKeyBinds();
 
 		//Hud
 		HudRender.registerHudRendering();
-		ArmorHud.renderArmorInHud();
+		ArmorHud.renderArmorHud();
 		ToggleCamera.changeCameraPosition();
 
 		//Render
-		BeeHiveHelper.register();
+		BeeHiveHelper.highlightBeeHives();
 		NoFog.noFog();
 
 		//generic

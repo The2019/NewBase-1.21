@@ -19,7 +19,7 @@ public class InitKeyBindings {
     private static final MinecraftClient mc = MinecraftClient.getInstance();
 
 
-    public static void initKeys(){
+    public static void initKeyBinds(){
         KeyBinding configScreen = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.configscreen", GLFW.GLFW_KEY_O, "newbase.name"));
 
         KeyBinding chatCoordinates = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.sendcoordinates", GLFW.GLFW_KEY_P, "newbase.name"));

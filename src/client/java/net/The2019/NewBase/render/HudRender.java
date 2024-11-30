@@ -42,8 +42,8 @@ public class HudRender {
             for (DisplayElements element : displayElements) {
                     if (element.isActive()) {
                     drawContext.drawText(mc.textRenderer, element.getText(), 10, yOffset, element.getColor(), false);
-                    yOffset += 10; // Adjust the Y position for the next element
-            }
+                    yOffset += 10;
+                }
             }
         });
     }
@@ -95,20 +95,4 @@ public class HudRender {
     }
 
 
-    public static void updateCamera() {
-        if (readModule(toggleCamera)) {
-            MinecraftClient client = MinecraftClient.getInstance();
-
-            // Position the RTS camera at a fixed angle above the saved player position
-            double rtsCameraHeight = 20.0;
-            double rtsCameraDistance = 20.0;
-            double angleRadians = Math.toRadians(45); // 45-degree angle
-
-            double offsetX = Math.sin(angleRadians) * rtsCameraDistance;
-            double offsetZ = Math.cos(angleRadians) * rtsCameraDistance;
-
-            // Set the camera position and direction
-
-        }
-    }
 }
