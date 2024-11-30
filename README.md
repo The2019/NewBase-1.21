@@ -33,6 +33,12 @@ A client sided utility mod for Minecraft 1.21 for fabric.
     - Shows your deathcoordinates in the deathscreen
 - Chat Coordinates
     - Sends your coordinates in the chat 
+- Pitch Yaw Display
+  - Shows your pitch and yaw
+- Day Counter
+  - Shows how many days the world has
+- Time Display
+  - Shows you the time
 
 
 

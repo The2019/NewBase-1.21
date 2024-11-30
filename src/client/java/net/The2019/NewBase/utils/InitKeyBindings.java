@@ -11,7 +11,6 @@ import org.lwjgl.glfw.GLFW;
 
 import static net.The2019.NewBase.config.ModuleConfig.readModule;
 import static net.The2019.NewBase.config.ModuleConfig.saveModuleState;
-import static net.The2019.NewBase.config.ModuleStates.placer;
 import static net.The2019.NewBase.config.ModuleStates.toggleCamera;
 
 public class InitKeyBindings {
@@ -24,8 +23,6 @@ public class InitKeyBindings {
 
         KeyBinding chatCoordinates = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.sendcoordinates", GLFW.GLFW_KEY_P, "newbase.name"));
 
-        KeyBinding togglePlacer = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.toggleplacer", GLFW.GLFW_KEY_K, "newbase.name"));
-
         KeyBinding toggleYawSet = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.toggletest", GLFW.GLFW_KEY_J, "newbase.name"));
 
         KeyBinding toggleCameraKey = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglecamera", GLFW.GLFW_KEY_B, "newbase.name"));
@@ -37,10 +34,6 @@ public class InitKeyBindings {
             }
             if(chatCoordinates.wasPressed()){
                 mc.setScreen(new ChatCoordinatesScreen(mc.currentScreen, mc.options));
-            }
-            if(togglePlacer.wasPressed()){
-                MinecraftClient.getInstance().options.forwardKey.setPressed(!readModule(placer));
-                saveModuleState(placer, !readModule(placer));
             }
             if(toggleYawSet.wasPressed()){
                 YawSet.setYaw();

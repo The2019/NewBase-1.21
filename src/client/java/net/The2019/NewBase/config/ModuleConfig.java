@@ -83,7 +83,6 @@ public final class ModuleConfig {
         cachedConfig.addProperty(ModuleStates.fpsDisplay, true);
         cachedConfig.addProperty(ModuleStates.beehiveRender, false);
         cachedConfig.addProperty(ModuleStates.fullBrightRender, true);
-        cachedConfig.addProperty(ModuleStates.placer, false);
         cachedConfig.addProperty(ModuleStates.tridentHelper, true);
         cachedConfig.addProperty(ModuleStates.deathcoords, true);
         cachedConfig.addProperty(ModuleStates.noFog, true);

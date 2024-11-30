@@ -1,6 +1,7 @@
 package net.The2019.NewBase.screens.configScreen;
 
 import net.The2019.NewBase.screens.ConfigScreen;
+import net.The2019.NewBase.screens.widget.ColorSelectWidget;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.tooltip.Tooltip;
@@ -8,6 +9,8 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextWidget;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.text.Text;
+
+import java.awt.*;
 
 import static net.The2019.NewBase.config.ModuleConfig.readModule;
 import static net.The2019.NewBase.config.ModuleConfig.saveModuleState;
@@ -36,14 +39,14 @@ public class RenderScreen extends Screen {
 
         y = 30;
 
-        addContent("beehiverender", beehiveRender, x, y += spacing, buttonWidth, buttonHeight);
-        addContent("fullbrightrender", fullBrightRender, x, y += spacing, buttonWidth, buttonHeight);
-        addContent("nofog", noFog, x, y += spacing, buttonWidth, buttonHeight);
-        addContent("armorHud", armorHud, x, y += spacing, buttonWidth, buttonHeight);
+        addTextButton("beehiverender", beehiveRender, x, y += spacing, buttonWidth, buttonHeight);
+        addTextButton("fullbrightrender", fullBrightRender, x, y += spacing, buttonWidth, buttonHeight);
+        addTextButton("nofog", noFog, x, y += spacing, buttonWidth, buttonHeight);
+        addTextButton("armorHud", armorHud, x, y += spacing, buttonWidth, buttonHeight);
 
     }
 
-    private void addContent(String key, String module, int x, int y, int buttonWidth, int buttonHeight) {
+    private void addTextButton(String key, String module, int x, int y, int buttonWidth, int buttonHeight) {
         this.addDrawable(new TextWidget(x, y, 500, 20, Text.translatable("newbase.renderscreen." + key), mc.textRenderer).alignLeft());
         this.addDrawableChild(new ButtonWidget.Builder(toggleModule(module), button -> {
             saveModuleState(module, !readModule(module));

@@ -36,13 +36,12 @@ public class GenericScreen extends Screen {
 
         y = 30;
 
-        addContent("placer", placer, x, y += spacing, buttonWidth, buttonHeight);
-        addContent("tridenthelper", tridentHelper, x, y += spacing, buttonWidth, buttonHeight);
-        addContent("deathcorrds", deathcoords, x, y += spacing, buttonWidth, buttonHeight);
+        addTextButton("tridenthelper", tridentHelper, x, y += spacing, buttonWidth, buttonHeight);
+        addTextButton("deathcorrds", deathcoords, x, y += spacing, buttonWidth, buttonHeight);
 
     }
 
-    private void addContent(String key, String module, int x, int y, int buttonWidth, int buttonHeight) {
+    private void addTextButton(String key, String module, int x, int y, int buttonWidth, int buttonHeight) {
         this.addDrawable(new TextWidget(x, y, 500, 20, Text.translatable("newbase.genericscreen." + key), mc.textRenderer).alignLeft());
         this.addDrawableChild(new ButtonWidget.Builder(toggleModule(module), button -> {
             saveModuleState(module, !readModule(module));
