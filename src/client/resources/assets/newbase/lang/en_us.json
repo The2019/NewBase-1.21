@@ -10,6 +10,7 @@
   "newbase.configscreen.generic": "Generic Configs",
   "newbase.configscreen.genericbutton": "Generic Configs",
   "newbase.configscreen.rendertooltip": "Opens the config menu for the Renderings.",
+  "newbase.configscreen.generictooltip": "Opens the config menu for Generic Features.",
   "newbase.configscreen.nametooltip": "Close with ESC.",
 
   "newbase.hudscreen.name": "Hud Config Screen",

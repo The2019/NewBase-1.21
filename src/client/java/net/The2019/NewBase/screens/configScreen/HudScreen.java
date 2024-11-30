@@ -6,10 +6,8 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.client.gui.widget.SliderWidget;
 import net.minecraft.client.gui.widget.TextWidget;
 import net.minecraft.client.option.GameOptions;
-import net.minecraft.text.ClickEvent;
 import net.minecraft.text.Text;
 
 import java.awt.*;
@@ -28,7 +26,6 @@ public class HudScreen extends Screen {
     private static final int buttonWidth = 200;
     private static final int buttonHeight = 20;
     private static final int spacing = 30;
-    private int blue = 255;
 
     public HudScreen(Screen parent, GameOptions settings) {
         super(Text.translatable("newbase.hudscreen.name"));
@@ -61,7 +58,7 @@ public class HudScreen extends Screen {
             saveModuleState(module, !readModule(module));
             mc.setScreen(new HudScreen(mc.currentScreen, mc.options));
         }).tooltip(Tooltip.of(Text.translatable("newbase.hudscreen.tooltip")))
-                .dimensions(this.width - 220, y, buttonWidth, buttonHeight).build());
+        .dimensions(this.width - 220, y, buttonWidth, buttonHeight).build());
     }
 
     private static Text toggleModule(String module){

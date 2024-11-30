@@ -24,7 +24,7 @@ public class GenericScreen extends Screen {
     private static final int spacing = 30;
 
     public GenericScreen(Screen parent, GameOptions settings) {
-        super(Text.translatable("newbase.gene1ricscreen.name"));
+        super(Text.translatable("newbase.genericscreen.name"));
         this.parent = parent;
         this.settings = settings;
     }
@@ -47,7 +47,7 @@ public class GenericScreen extends Screen {
             saveModuleState(module, !readModule(module));
             mc.setScreen(new HudScreen(mc.currentScreen, mc.options));
         }).tooltip(Tooltip.of(Text.translatable("newbase.hudscreen.tooltip")))
-                .dimensions(this.width - 220, y, buttonWidth, buttonHeight).build());
+        .dimensions(this.width - 220, y, buttonWidth, buttonHeight).build());
     }
 
     private static Text toggleModule(String module){
