@@ -91,6 +91,7 @@ public final class ModuleConfig {
         cachedConfig.addProperty(ModuleStates.pitchYaw, true);
         cachedConfig.addProperty(ModuleStates.dayCount, true);
         cachedConfig.addProperty(ModuleStates.realLiveTime, true);
+        cachedConfig.addProperty(ModuleStates.gpuPercent, true);
 
         saveConfigToFile();
     }
