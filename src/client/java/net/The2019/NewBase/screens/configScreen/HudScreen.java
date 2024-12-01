@@ -3,7 +3,6 @@ package net.The2019.NewBase.screens.configScreen;
 import net.The2019.NewBase.screens.ConfigScreen;
 import net.The2019.NewBase.screens.widget.ColorSelectWidget;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -18,7 +17,6 @@ import static net.The2019.NewBase.config.ColorStates.hudColor;
 import static net.The2019.NewBase.config.ModuleConfig.readModule;
 import static net.The2019.NewBase.config.ModuleConfig.saveModuleState;
 import static net.The2019.NewBase.config.ModuleStates.*;
-import static net.The2019.NewBase.render.HudRender.color;
 
 
 public class HudScreen extends Screen {

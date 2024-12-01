@@ -1,6 +1,7 @@
 package net.The2019.NewBase.render;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.The2019.NewBase.config.ColorStates;
 import net.The2019.NewBase.features.hud.*;
 import net.The2019.NewBase.utils.DisplayElements;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
@@ -16,7 +17,6 @@ import java.util.List;
 
 import static net.The2019.NewBase.NewBaseClient.MOD_ID;
 import static net.The2019.NewBase.config.ColorConfig.readColor;
-import static net.The2019.NewBase.config.ColorStates.hudColor;
 import static net.The2019.NewBase.config.ModuleConfig.readModule;
 import static net.The2019.NewBase.config.ModuleStates.*;
 
@@ -25,7 +25,6 @@ public class HudRender {
     private static final MinecraftClient mc = MinecraftClient.getInstance();
     private static final List<DisplayElements> displayElements = new ArrayList<>();
     private static final Identifier slot = Identifier.of(MOD_ID, "textures/gui/slot_22x30.png");
-    public static Color color = Color.GREEN;
 
 
     public static void registerHudRendering() {
@@ -48,7 +47,7 @@ public class HudRender {
 
             for (DisplayElements element : displayElements) {
                     if (element.isActive()) {
-                    drawContext.drawText(mc.textRenderer, element.getText(), 10, yOffset, readColor(hudColor).getRGB(), false);
+                    drawContext.drawText(mc.textRenderer, element.getText(), 10, yOffset, readColor(ColorStates.hudColor).getRGB(), false);
                     yOffset += 10;
                 }
             }

@@ -11,6 +11,7 @@ import org.lwjgl.glfw.GLFW;
 
 import static net.The2019.NewBase.config.ModuleConfig.readModule;
 import static net.The2019.NewBase.config.ModuleConfig.saveModuleState;
+import static net.The2019.NewBase.config.ModuleStates.fullBrightRender;
 import static net.The2019.NewBase.config.ModuleStates.toggleCamera;
 
 public class InitKeyBindings {
@@ -23,9 +24,11 @@ public class InitKeyBindings {
 
         KeyBinding chatCoordinates = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.sendcoordinates", GLFW.GLFW_KEY_P, "newbase.name"));
 
-        KeyBinding toggleYawSet = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.toggletest", GLFW.GLFW_KEY_J, "newbase.name"));
+        KeyBinding toggleYawSet = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.toggleyaw", GLFW.GLFW_KEY_J, "newbase.name"));
 
         KeyBinding toggleCameraKey = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglecamera", GLFW.GLFW_KEY_K, "newbase.name"));
+
+        KeyBinding toggleFullBright = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglefullbright", GLFW.GLFW_KEY_H, "newbase.name"));
 
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
@@ -40,6 +43,9 @@ public class InitKeyBindings {
             }
             if(toggleCameraKey.wasPressed()){
                 saveModuleState(toggleCamera, !readModule(toggleCamera));
+            }
+            if(toggleFullBright.wasPressed()){
+                saveModuleState(fullBrightRender, !readModule(fullBrightRender));
             }
         });
     }
