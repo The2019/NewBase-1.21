@@ -50,7 +50,7 @@ public class RenderScreen extends Screen {
         this.addDrawable(new TextWidget(x, y, 500, 20, Text.translatable("newbase.renderscreen." + key), mc.textRenderer).alignLeft());
         this.addDrawableChild(new ButtonWidget.Builder(toggleModule(module), button -> {
             saveModuleState(module, !readModule(module));
-            mc.setScreen(new HudScreen(mc.currentScreen, mc.options));
+            mc.setScreen(new RenderScreen(mc.currentScreen, mc.options));
         }).tooltip(Tooltip.of(Text.translatable("newbase.hudscreen.tooltip")))
         .dimensions(this.width - 220, y, buttonWidth, buttonHeight).build());
     }

@@ -49,5 +49,5 @@
   "newbase.keybinds.configscreen": "Config Screen",
   "newbase.keybinds.sendcoordinates": "Send Coordinates",
   "newbase.keybinds.toggleplacer": "Toggle Placer",
-  "newbase.keybinds.toggletest": "Toggle Set Yaw"
+  "newbase.keybinds.togglecamera": "Toggle Camera"
 }
