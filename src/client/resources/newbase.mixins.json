@@ -5,7 +5,8 @@
 	"client": [
 		"BrightnessMixin",
 		"DeathScreenMixin",
-		"PlayerListHudMixin"
+		"PlayerListHudMixin",
+		"MixinBackgroundRendererNoFog"
 	],
 	"injectors": {
 		"defaultRequire": 1

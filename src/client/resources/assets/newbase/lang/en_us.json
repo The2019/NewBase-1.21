@@ -50,5 +50,6 @@
   "newbase.keybinds.sendcoordinates": "Send Coordinates",
   "newbase.keybinds.toggleyaw": "Toggle Set Yaw",
   "newbase.keybinds.togglecamera": "Toggle Camera",
-  "newbase.keybinds.togglefullbright": "Toggle Full Bright"
+  "newbase.keybinds.togglefullbright": "Toggle Full Bright",
+  "newbase.keybinds.togglenofog": "Toggle No Fog"
 }

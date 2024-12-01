@@ -11,8 +11,7 @@ import org.lwjgl.glfw.GLFW;
 
 import static net.The2019.NewBase.config.ModuleConfig.readModule;
 import static net.The2019.NewBase.config.ModuleConfig.saveModuleState;
-import static net.The2019.NewBase.config.ModuleStates.fullBrightRender;
-import static net.The2019.NewBase.config.ModuleStates.toggleCamera;
+import static net.The2019.NewBase.config.ModuleStates.*;
 
 public class InitKeyBindings {
 
@@ -30,6 +29,8 @@ public class InitKeyBindings {
 
         KeyBinding toggleFullBright = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglefullbright", GLFW.GLFW_KEY_H, "newbase.name"));
 
+        KeyBinding toggleNoFog = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglenofog", GLFW.GLFW_KEY_U, "newbase.name"));
+
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if(configScreen.wasPressed()){
@@ -46,6 +47,9 @@ public class InitKeyBindings {
             }
             if(toggleFullBright.wasPressed()){
                 saveModuleState(fullBrightRender, !readModule(fullBrightRender));
+            }
+            if(toggleNoFog.wasPressed()){
+                saveModuleState(noFog, !readModule(noFog));
             }
         });
     }
