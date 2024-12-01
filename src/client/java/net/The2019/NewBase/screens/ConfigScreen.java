@@ -31,15 +31,21 @@ public class ConfigScreen extends Screen {
 
         //Hud
         this.addDrawable(new TextWidget(x, y, 100, 20, Text.translatable("newbase.configscreen.hud"), mc.textRenderer).alignLeft());
-        this.addDrawableChild(new ButtonWidget.Builder(Text.translatable("newbase.configscreen.hudbutton"), button -> {mc.setScreen(new HudScreen(mc.currentScreen, mc.options));}).tooltip(Tooltip.of(Text.translatable("newbase.configscreen.hudtooltip"))).dimensions(this.width - 220, y, 200, 20).build());
+        this.addDrawableChild(new ButtonWidget.Builder(Text.translatable("newbase.configscreen.hudbutton"), button -> {
+            mc.setScreen(new HudScreen(mc.currentScreen, mc.options));
+        }).tooltip(Tooltip.of(Text.translatable("newbase.configscreen.hudtooltip"))).dimensions(this.width - 220, y, 200, 20).build());
 
         //Render
-        this.addDrawable(new TextWidget(x, y+30, 100, 20, Text.translatable("newbase.configscreen.render"), mc.textRenderer).alignLeft());
-        this.addDrawableChild(new ButtonWidget.Builder(Text.translatable("newbase.configscreen.renderbutton"), button -> {mc.setScreen(new RenderScreen(mc.currentScreen, mc.options));}).tooltip(Tooltip.of(Text.translatable("newbase.configscreen.rendertooltip"))).dimensions(this.width - 220, y+30, 200, 20).build());
+        this.addDrawable(new TextWidget(x, y + 30, 100, 20, Text.translatable("newbase.configscreen.render"), mc.textRenderer).alignLeft());
+        this.addDrawableChild(new ButtonWidget.Builder(Text.translatable("newbase.configscreen.renderbutton"), button -> {
+            mc.setScreen(new RenderScreen(mc.currentScreen, mc.options));
+        }).tooltip(Tooltip.of(Text.translatable("newbase.configscreen.rendertooltip"))).dimensions(this.width - 220, y + 30, 200, 20).build());
 
         //Generic
-        this.addDrawable(new TextWidget(x, y+60, 100, 20, Text.translatable("newbase.configscreen.generic"), mc.textRenderer).alignLeft());
-        this.addDrawableChild(new ButtonWidget.Builder(Text.translatable("newbase.configscreen.genericbutton"), button -> {mc.setScreen(new GenericScreen(mc.currentScreen, mc.options));}).tooltip(Tooltip.of(Text.translatable("newbase.configscreen.rendertooltip"))).dimensions(this.width - 220, y+60, 200, 20).build());
+        this.addDrawable(new TextWidget(x, y + 60, 100, 20, Text.translatable("newbase.configscreen.generic"), mc.textRenderer).alignLeft());
+        this.addDrawableChild(new ButtonWidget.Builder(Text.translatable("newbase.configscreen.genericbutton"), button -> {
+            mc.setScreen(new GenericScreen(mc.currentScreen, mc.options));
+        }).tooltip(Tooltip.of(Text.translatable("newbase.configscreen.rendertooltip"))).dimensions(this.width - 220, y + 60, 200, 20).build());
 
     }
 

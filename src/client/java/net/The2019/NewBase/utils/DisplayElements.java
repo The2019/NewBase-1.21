@@ -6,13 +6,11 @@ import java.util.function.Supplier;
 
 public class DisplayElements {
     private final String name;
-    private final int color;
     private final Supplier<Text> textSupplier;
     private boolean active;
 
-    public DisplayElements(String name, int color, Supplier<Text> textSupplier) {
+    public DisplayElements(String name, Supplier<Text> textSupplier) {
         this.name = name;
-        this.color = color;
         this.textSupplier = textSupplier;
         this.active = true; // Elements are active by default
     }
@@ -31,10 +29,6 @@ public class DisplayElements {
 
     public String getName() {
         return name;
-    }
-
-    public int getColor() {
-        return color;
     }
 }
 

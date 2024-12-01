@@ -3,6 +3,7 @@ package net.The2019.NewBase.screens.configScreen;
 import net.The2019.NewBase.screens.ConfigScreen;
 import net.The2019.NewBase.screens.widget.ColorSelectWidget;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -12,16 +13,21 @@ import net.minecraft.text.Text;
 
 import java.awt.*;
 
+import static net.The2019.NewBase.config.ColorConfig.saveColor;
+import static net.The2019.NewBase.config.ColorStates.hudColor;
 import static net.The2019.NewBase.config.ModuleConfig.readModule;
 import static net.The2019.NewBase.config.ModuleConfig.saveModuleState;
 import static net.The2019.NewBase.config.ModuleStates.*;
+import static net.The2019.NewBase.render.HudRender.color;
 
 
 public class HudScreen extends Screen {
     private final Screen parent;
     private final GameOptions settings;
     private static final int x = 20;
-    private static int y = 30;
+    private static int y = 60;
+    private static final int yWidget = 50;
+    private static int xWidget = 0;
     private static final MinecraftClient mc = MinecraftClient.getInstance();
     private static final int buttonWidth = 200;
     private static final int buttonHeight = 20;
@@ -38,7 +44,32 @@ public class HudScreen extends Screen {
 
         this.addDrawableChild(new ButtonWidget.Builder(Text.translatable("newbase.hudscreen.back"), button -> {mc.setScreen(new ConfigScreen(mc.currentScreen, mc.options));}).dimensions(17, 20, 100,20).build());
 
-        y = 30;
+        y = 60;
+        xWidget = this.width -40;
+
+        this.addDrawable(new TextWidget(x, yWidget, 500, 20, Text.translatable("newbase.hudscreen.changecolor"), mc.textRenderer).alignLeft());
+
+        this.addDrawableChild(new ColorSelectWidget(xWidget , yWidget, 20, 20, Text.literal(""), Color.GREEN, colorSelectWidget -> {
+            saveColor(hudColor, Color.GREEN);
+        }));
+        this.addDrawableChild(new ColorSelectWidget(xWidget -= spacing , yWidget, 20, 20, Text.literal(""), Color.BLACK, colorSelectWidget -> {
+            saveColor(hudColor, Color.BLACK);
+        }));
+        this.addDrawableChild(new ColorSelectWidget(xWidget -= spacing , yWidget, 20, 20, Text.literal(""), Color.WHITE, colorSelectWidget -> {
+            saveColor(hudColor, Color.WHITE);
+        }));
+        this.addDrawableChild(new ColorSelectWidget(xWidget -= spacing , yWidget, 20, 20, Text.literal(""), Color.RED, colorSelectWidget -> {
+            saveColor(hudColor, Color.RED);
+        }));
+        this.addDrawableChild(new ColorSelectWidget(xWidget -= spacing , yWidget, 20, 20, Text.literal(""), Color.ORANGE, colorSelectWidget -> {
+            saveColor(hudColor, Color.ORANGE);
+        }));
+        this.addDrawableChild(new ColorSelectWidget(xWidget -= spacing , yWidget, 20, 20, Text.literal(""), Color.BLUE, colorSelectWidget -> {
+            saveColor(hudColor, Color.BLUE);
+        }));
+        this.addDrawableChild(new ColorSelectWidget(xWidget -= spacing , yWidget, 20, 20, Text.literal(""), Color.MAGENTA, colorSelectWidget -> {
+            saveColor(hudColor, Color.MAGENTA);
+        }));
 
         addTextButton("togglecoordinatesdisplay", coordinateDisplay, x, y += spacing, buttonWidth, buttonHeight);
         addTextButton("togglebiomedisplay", biomeDisplay, x, y += spacing, buttonWidth, buttonHeight);
@@ -47,9 +78,7 @@ public class HudScreen extends Screen {
         addTextButton("toggeldaycount", dayCount, x, y += spacing, buttonWidth, buttonHeight);
         addTextButton("toggelreallivetime", realLiveTime, x, y += spacing, buttonWidth, buttonHeight);
 
-        this.addDrawableChild(new ColorSelectWidget(x, y += spacing, 20, 20, Text.literal(""), Color.GREEN, colorSelectWidget -> {
-            mc.player.sendMessage(Text.literal("pressed"));
-        }));
+
     }
 
     private void addTextButton(String key, String module, int x, int y, int buttonWidth, int buttonHeight) {

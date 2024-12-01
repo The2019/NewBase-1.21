@@ -9,6 +9,8 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import org.lwjgl.glfw.GLFW;
 
+import static net.The2019.NewBase.config.KeyBindsConfig.readKeyCode;
+import static net.The2019.NewBase.config.KeyBindsStates.*;
 import static net.The2019.NewBase.config.ModuleConfig.readModule;
 import static net.The2019.NewBase.config.ModuleConfig.saveModuleState;
 import static net.The2019.NewBase.config.ModuleStates.toggleCamera;
@@ -25,7 +27,7 @@ public class InitKeyBindings {
 
         KeyBinding toggleYawSet = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.toggletest", GLFW.GLFW_KEY_J, "newbase.name"));
 
-        KeyBinding toggleCameraKey = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglecamera", GLFW.GLFW_KEY_B, "newbase.name"));
+        KeyBinding toggleCameraKey = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglecamera", GLFW.GLFW_KEY_K, "newbase.name"));
 
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {

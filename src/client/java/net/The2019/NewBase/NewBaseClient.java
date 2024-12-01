@@ -1,5 +1,6 @@
 package net.The2019.NewBase;
 
+import net.The2019.NewBase.config.ColorConfig;
 import net.The2019.NewBase.config.ModuleConfig;
 import net.The2019.NewBase.features.generic.TridentHelper;
 import net.The2019.NewBase.features.hud.ArmorHud;
@@ -20,6 +21,7 @@ public class NewBaseClient implements ClientModInitializer {
 		//Utils
 		PermissionLevel.initAllowedPlayers();
 		ModuleConfig.init();
+		ColorConfig.init();
 		InitKeyBindings.initKeyBinds();
 
 		//Hud

@@ -8,18 +8,18 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.awt.Color;
 
 import static net.The2019.NewBase.NewBaseClient.MOD_ID;
+import static net.The2019.NewBase.config.ColorStates.hudColor;
 
-public final class ModuleConfig {
+public final class ColorConfig {
 
     private static final File configDir = Paths.get("", "config", MOD_ID).toFile();
-    private static final File configFile = new File(configDir, "modules.json");
+    private static final File configFile = new File(configDir, "colors.json");
 
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
     private static JsonObject cachedConfig;
 
     public static void init() {
@@ -27,31 +27,28 @@ public final class ModuleConfig {
         if (!configFile.exists()) {
             try {
                 configFile.createNewFile();
-                if (Files.size(configFile.toPath()) == 0) {
+                if (configFile.length() == 0) {
                     writeDefaultValues();
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-
         reloadConfig();
     }
 
-    public static boolean readModule(String module) {
-        if (cachedConfig != null && cachedConfig.has(module)) {
-            return cachedConfig.get(module).getAsBoolean();
+    public static Color readColor(String feature) {
+        if (cachedConfig != null && cachedConfig.has(feature)) {
+            return new Color(cachedConfig.get(feature).getAsInt());
         }
-        return true;
+        return Color.WHITE;
     }
 
-    public static void saveModuleState(String module, boolean state) {
+    public static void saveColor(String feature, Color color) {
         if (cachedConfig == null) {
             cachedConfig = new JsonObject();
         }
-
-        cachedConfig.addProperty(module, state);
-
+        cachedConfig.addProperty(feature, color.getRGB());
         saveConfigToFile();
     }
 
@@ -77,21 +74,7 @@ public final class ModuleConfig {
 
     private static void writeDefaultValues() {
         cachedConfig = new JsonObject();
-
-        cachedConfig.addProperty(ModuleStates.coordinateDisplay, true);
-        cachedConfig.addProperty(ModuleStates.biomeDisplay, true);
-        cachedConfig.addProperty(ModuleStates.fpsDisplay, true);
-        cachedConfig.addProperty(ModuleStates.beehiveRender, false);
-        cachedConfig.addProperty(ModuleStates.fullBrightRender, true);
-        cachedConfig.addProperty(ModuleStates.tridentHelper, true);
-        cachedConfig.addProperty(ModuleStates.deathcoords, true);
-        cachedConfig.addProperty(ModuleStates.noFog, true);
-        cachedConfig.addProperty(ModuleStates.toggleCamera, true);
-        cachedConfig.addProperty(ModuleStates.armorHud, true);
-        cachedConfig.addProperty(ModuleStates.pitchYaw, true);
-        cachedConfig.addProperty(ModuleStates.dayCount, true);
-        cachedConfig.addProperty(ModuleStates.realLiveTime, true);
-
+        cachedConfig.addProperty(hudColor, Color.GREEN.getRGB());
         saveConfigToFile();
     }
 }
