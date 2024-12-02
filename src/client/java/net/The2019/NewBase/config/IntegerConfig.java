@@ -12,11 +12,13 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static net.The2019.NewBase.NewBaseClient.MOD_ID;
+import static net.The2019.NewBase.config.IntegerStates.normalFOV;
+import static net.The2019.NewBase.config.IntegerStates.zoomFOV;
 
-public final class ModuleConfig {
+public final class IntegerConfig {
 
     private static final File configDir = Paths.get("", "config", MOD_ID).toFile();
-    private static final File configFile = new File(configDir, "modules.json");
+    private static final File configFile = new File(configDir, "integer_values.json");
 
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -38,19 +40,19 @@ public final class ModuleConfig {
         reloadConfig();
     }
 
-    public static boolean readModule(String module) {
-        if (cachedConfig != null && cachedConfig.has(module)) {
-            return cachedConfig.get(module).getAsBoolean();
+    public static int readValue(String key) {
+        if (cachedConfig != null && cachedConfig.has(key)) {
+            return cachedConfig.get(key).getAsInt();
         }
-        return true;
+        return 0;
     }
 
-    public static void saveModuleState(String module, boolean state) {
+    public static void saveValue(String key, int value) {
         if (cachedConfig == null) {
             cachedConfig = new JsonObject();
         }
 
-        cachedConfig.addProperty(module, state);
+        cachedConfig.addProperty(key, value);
 
         saveConfigToFile();
     }
@@ -67,6 +69,7 @@ public final class ModuleConfig {
         }
     }
 
+
     private static void saveConfigToFile() {
         try (FileWriter writer = new FileWriter(configFile)) {
             gson.toJson(cachedConfig, writer);
@@ -75,24 +78,13 @@ public final class ModuleConfig {
         }
     }
 
+
     private static void writeDefaultValues() {
         cachedConfig = new JsonObject();
 
-        cachedConfig.addProperty(ModuleStates.coordinateDisplay, true);
-        cachedConfig.addProperty(ModuleStates.biomeDisplay, true);
-        cachedConfig.addProperty(ModuleStates.fpsDisplay, true);
-        cachedConfig.addProperty(ModuleStates.beehiveRender, false);
-        cachedConfig.addProperty(ModuleStates.fullBrightRender, true);
-        cachedConfig.addProperty(ModuleStates.tridentHelper, true);
-        cachedConfig.addProperty(ModuleStates.deathcoords, true);
-        cachedConfig.addProperty(ModuleStates.noFog, true);
-        cachedConfig.addProperty(ModuleStates.toggleCamera, true);
-        cachedConfig.addProperty(ModuleStates.armorHud, true);
-        cachedConfig.addProperty(ModuleStates.pitchYaw, true);
-        cachedConfig.addProperty(ModuleStates.dayCount, true);
-        cachedConfig.addProperty(ModuleStates.realLiveTime, true);
-        cachedConfig.addProperty(ModuleStates.gpuPercent, true);
-        cachedConfig.addProperty(ModuleStates.toggleZoom, true);
+        // Example default values (add as needed)
+        cachedConfig.addProperty(zoomFOV, 30);
+        cachedConfig.addProperty(normalFOV, 110);
 
         saveConfigToFile();
     }

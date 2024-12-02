@@ -32,6 +32,7 @@ public class BeeHiveHelper {
         for (BlockEntity blockEntity : getBlockEntities().collect(Collectors.toCollection(ArrayList::new))) {
             if (blockEntity instanceof BeehiveBlockEntity) {
                 BlockPos blockEntityPos = blockEntity.getPos();
+
                 drawBox(context.matrixStack(), context.consumers(), blockEntityPos, blockEntityPos, 1.0f, 1.0f, 1.0f, 1.0f);
             }
         }

@@ -1,8 +1,11 @@
 package net.The2019.NewBase.screens.configScreen;
 
 import net.The2019.NewBase.screens.ConfigScreen;
+import net.The2019.NewBase.screens.editScreens.ZoomEditScreen;
 import net.The2019.NewBase.screens.widget.ColorSelectWidget;
+import net.The2019.NewBase.screens.widget.EditButtonWidget;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.GameModeSelectionScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -43,7 +46,10 @@ public class RenderScreen extends Screen {
         addTextButton("fullbrightrender", fullBrightRender, x, y += spacing, buttonWidth, buttonHeight);
         addTextButton("nofog", noFog, x, y += spacing, buttonWidth, buttonHeight);
         addTextButton("armorHud", armorHud, x, y += spacing, buttonWidth, buttonHeight);
-
+        addTextButton("toggleZoom", toggleZoom, x, y += spacing, buttonWidth, buttonHeight);
+        this.addDrawableChild(new EditButtonWidget(this.width - 30, y, 20, 20, Text.of(""), editButtonWidget -> {
+            mc.setScreen(new ZoomEditScreen(mc.currentScreen, mc.options));
+        }));
     }
 
     private void addTextButton(String key, String module, int x, int y, int buttonWidth, int buttonHeight) {
@@ -52,7 +58,7 @@ public class RenderScreen extends Screen {
             saveModuleState(module, !readModule(module));
             mc.setScreen(new RenderScreen(mc.currentScreen, mc.options));
         }).tooltip(Tooltip.of(Text.translatable("newbase.hudscreen.tooltip")))
-        .dimensions(this.width - 220, y, buttonWidth, buttonHeight).build());
+        .dimensions(this.width - 240, y, buttonWidth, buttonHeight).build());
     }
 
 

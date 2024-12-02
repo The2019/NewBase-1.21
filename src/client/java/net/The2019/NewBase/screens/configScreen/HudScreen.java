@@ -86,7 +86,7 @@ public class HudScreen extends Screen {
             saveModuleState(module, !readModule(module));
             mc.setScreen(new HudScreen(mc.currentScreen, mc.options));
         }).tooltip(Tooltip.of(Text.translatable("newbase.hudscreen.tooltip")))
-        .dimensions(this.width - 220, y, buttonWidth, buttonHeight).build());
+        .dimensions(this.width - 240, y, buttonWidth, buttonHeight).build());
     }
 
     private static Text toggleModule(String module){

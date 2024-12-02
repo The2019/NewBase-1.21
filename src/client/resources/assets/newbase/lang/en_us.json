@@ -33,9 +33,17 @@
   "newbase.renderscreen.fullbrightrender": "Toggle Full Bright",
   "newbase.renderscreen.nofog": "Toggle NoFog",
   "newbase.renderscreen.armorHud": "Toggle Armor Hud",
+  "newbase.renderscreen.toggleZoom": "Toggle Zoom",
+  "newbase.renderscreen.Edit": "Edit",
   "newbase.renderscreen.enabled": "§aEnabled",
   "newbase.renderscreen.disabled": "§4Disabled",
   "newbase.renderscreen.tooltip": "Press to Toggle",
+  "newbase.renderscreen.tooltipzoom": "Press edit Zoom Config",
+
+  "newbase.zoomscreen.name": "Edit Zoom",
+  "newbase.zoomscreen.zoomfov": "Change zoom FOV",
+  "newbase.zoomscreen.normalfov": "Change normal FOV",
+  "newbase.zoomscreen.save": "Save",
 
   "newbase.genericscreen.name": "Generic Config Screen",
   "newbase.genericscreen.placer": "Toggle Placer",
@@ -52,5 +60,6 @@
   "newbase.keybinds.toggleyaw": "Toggle Set Yaw",
   "newbase.keybinds.togglecamera": "Toggle Camera",
   "newbase.keybinds.togglefullbright": "Toggle Full Bright",
-  "newbase.keybinds.togglenofog": "Toggle No Fog"
+  "newbase.keybinds.togglenofog": "Toggle No Fog",
+  "newbase.keybinds.togglezoom": "Toggle Zoom"
 }
