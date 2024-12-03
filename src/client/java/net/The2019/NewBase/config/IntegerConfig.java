@@ -36,7 +36,6 @@ public final class IntegerConfig {
                 throw new RuntimeException(e);
             }
         }
-
         reloadConfig();
     }
 
@@ -51,9 +50,7 @@ public final class IntegerConfig {
         if (cachedConfig == null) {
             cachedConfig = new JsonObject();
         }
-
         cachedConfig.addProperty(key, value);
-
         saveConfigToFile();
     }
 
@@ -82,7 +79,6 @@ public final class IntegerConfig {
     private static void writeDefaultValues() {
         cachedConfig = new JsonObject();
 
-        // Example default values (add as needed)
         cachedConfig.addProperty(zoomFOV, 30);
         cachedConfig.addProperty(normalFOV, 110);
 

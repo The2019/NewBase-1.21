@@ -33,7 +33,7 @@ public class BeeHiveHelper {
             if (blockEntity instanceof BeehiveBlockEntity) {
                 BlockPos blockEntityPos = blockEntity.getPos();
 
-                drawBox(context.matrixStack(), context.consumers(), blockEntityPos, blockEntityPos, 1.0f, 1.0f, 1.0f, 1.0f);
+                //drawBox(context.matrixStack(), context.consumers(), blockEntityPos, blockEntityPos, 1.0f, 1.0f, 1.0f, 1.0f);
             }
         }
     }
