@@ -8,7 +8,6 @@ public class ModuleStates {
     public static String pitchYaw = "pitchyaw";
     public static String dayCount = "daycount";
     public static String realLiveTime = "reallivetime";
-    public static String gpuPercent = "gpupercent";
 
     //Render
     public static String beehiveRender = "beehiverender";

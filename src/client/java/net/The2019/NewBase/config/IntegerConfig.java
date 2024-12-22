@@ -24,28 +24,50 @@ public final class IntegerConfig {
 
     private static JsonObject cachedConfig;
 
+    /**
+     * Initialize the configuration system by loading the file or creating it if it doesn't exist.
+     */
     public static void init() {
-        if (!configDir.exists()) configDir.mkdirs();
-        if (!configFile.exists()) {
-            try {
-                configFile.createNewFile();
-                if (Files.size(configFile.toPath()) == 0) {
-                    writeDefaultValues();
+        try {
+            if (!configDir.exists()) {
+                boolean dirCreated = configDir.mkdirs();
+                if (!dirCreated) {
+                    throw new IOException("Failed to create configuration directory.");
                 }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
             }
+
+            if (!configFile.exists()) {
+                boolean fileCreated = configFile.createNewFile();
+                if (!fileCreated) {
+                    throw new IOException("Failed to create configuration file.");
+                }
+                writeDefaultValues(); // Write defaults on the first run
+            }
+
+            reloadConfig(); // Load the configuration
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Failed to initialize configuration: " + e.getMessage());
         }
-        reloadConfig();
     }
 
+    /**
+     * Read an integer value from the configuration file by key.
+     * @param key The key to read.
+     * @return The integer value associated with the key, or 0 if not found.
+     */
     public static int readValue(String key) {
         if (cachedConfig != null && cachedConfig.has(key)) {
             return cachedConfig.get(key).getAsInt();
         }
-        return 0;
+        return 0; // Default to 0 if the key is missing
     }
 
+    /**
+     * Save an integer value to the configuration file under the given key.
+     * @param key The key to write.
+     * @param value The value to associate with the key.
+     */
     public static void saveValue(String key, int value) {
         if (cachedConfig == null) {
             cachedConfig = new JsonObject();
@@ -54,6 +76,9 @@ public final class IntegerConfig {
         saveConfigToFile();
     }
 
+    /**
+     * Reload the configuration file into memory.
+     */
     public static void reloadConfig() {
         try (FileReader reader = new FileReader(configFile)) {
             cachedConfig = gson.fromJson(reader, JsonObject.class);
@@ -62,25 +87,31 @@ public final class IntegerConfig {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            System.err.println("Failed to load configuration: " + e.getMessage());
             cachedConfig = new JsonObject();
         }
     }
 
-
+    /**
+     * Save the cached configuration to the file.
+     */
     private static void saveConfigToFile() {
         try (FileWriter writer = new FileWriter(configFile)) {
             gson.toJson(cachedConfig, writer);
         } catch (IOException e) {
             e.printStackTrace();
+            System.err.println("Failed to save configuration: " + e.getMessage());
         }
     }
 
-
+    /**
+     * Write default values to the configuration file.
+     */
     private static void writeDefaultValues() {
         cachedConfig = new JsonObject();
 
-        cachedConfig.addProperty(zoomFOV, 30);
-        cachedConfig.addProperty(normalFOV, 110);
+        cachedConfig.addProperty(zoomFOV, 30); // Default zoom FOV
+        cachedConfig.addProperty(normalFOV, 110); // Default normal FOV
 
         saveConfigToFile();
     }

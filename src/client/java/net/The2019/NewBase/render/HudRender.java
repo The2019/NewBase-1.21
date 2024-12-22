@@ -34,7 +34,6 @@ public class HudRender {
         displayElements.add(new DisplayElements("Pitch Yaw", PitchYawDisplay::getPitchYaw));
         displayElements.add(new DisplayElements("Day Count", DayCount::getDays));
         displayElements.add(new DisplayElements("Real Live Time", RealTImeDisplay::getRealWorldTime));
-        displayElements.add(new DisplayElements("GPU Percent", GpuPercentDisplay::gpuPercent));
 
         HudRenderCallback.EVENT.register((drawContext, tickDelta) -> {
             int yOffset = 10;
@@ -45,7 +44,6 @@ public class HudRender {
             displayElements.get(3).setActive(readModule(pitchYaw));
             displayElements.get(4).setActive(readModule(dayCount));
             displayElements.get(5).setActive(readModule(realLiveTime));
-            displayElements.get(5).setActive(readModule(gpuPercent));
 
             for (DisplayElements element : displayElements) {
                     if (element.isActive()) {

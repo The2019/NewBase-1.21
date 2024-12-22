@@ -75,7 +75,6 @@ public class HudScreen extends Screen {
         addTextButton("toggelpitchyaw", pitchYaw, x, y += spacing, buttonWidth, buttonHeight);
         addTextButton("toggeldaycount", dayCount, x, y += spacing, buttonWidth, buttonHeight);
         addTextButton("toggelreallivetime", realLiveTime, x, y += spacing, buttonWidth, buttonHeight);
-        addTextButton("toggelgpupercent", gpuPercent, x, y += spacing, buttonWidth, buttonHeight);
 
 
     }
