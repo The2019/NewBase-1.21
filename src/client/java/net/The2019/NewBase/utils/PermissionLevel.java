@@ -7,7 +7,6 @@ public class PermissionLevel {
 
     public static void initAllowedPlayers() {
         addPlayer("The2019");
-        addPlayer("TheChrisgamer18");
     }
 
     private static void addPlayer(String playerName) {

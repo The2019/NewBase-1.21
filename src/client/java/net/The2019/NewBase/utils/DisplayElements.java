@@ -12,7 +12,7 @@ public class DisplayElements {
     public DisplayElements(String name, Supplier<Text> textSupplier) {
         this.name = name;
         this.textSupplier = textSupplier;
-        this.active = true; // Elements are active by default
+        this.active = true;
     }
 
     public Text getText() {
