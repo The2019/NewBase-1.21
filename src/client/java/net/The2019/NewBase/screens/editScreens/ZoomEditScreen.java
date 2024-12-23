@@ -1,6 +1,5 @@
 package net.The2019.NewBase.screens.editScreens;
 
-import net.The2019.NewBase.screens.ConfigScreen;
 import net.The2019.NewBase.screens.configScreen.RenderScreen;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
@@ -52,7 +51,10 @@ public class ZoomEditScreen extends Screen {
         normalFovField.setText(String.valueOf(readValue(normalFOV))); // Default value
         this.addDrawableChild(normalFovField);
 
-        this.addDrawableChild(new ButtonWidget.Builder(Text.translatable("newbase.zoomscreen.save"), button -> saveValues())
+        this.addDrawableChild(new ButtonWidget.Builder(Text.translatable("newbase.zoomscreen.save"), button -> {
+            saveValues();
+            mc.setScreen(new ZoomEditScreen(mc.currentScreen, mc.options));
+        })
                 .dimensions(this.width-120, y += spacing + 10, 100, 20).build());
     }
     private void saveValues() {
@@ -72,10 +74,11 @@ public class ZoomEditScreen extends Screen {
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
         if(keyCode == GLFW.GLFW_KEY_ENTER){
             saveValues();
+            mc.setScreen(new ZoomEditScreen(mc.currentScreen, mc.options));
         }
         if(keyCode == GLFW.GLFW_KEY_ESCAPE){
             mc.setScreen(new RenderScreen(mc.currentScreen, mc.options));
         }
-        return true;
+        return super.keyPressed(keyCode, scanCode, modifiers);
     }
 }
