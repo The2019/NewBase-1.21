@@ -1,5 +1,6 @@
 package net.The2019.NewBase.screens.editScreens;
 
+import net.The2019.NewBase.screens.ConfigScreen;
 import net.The2019.NewBase.screens.configScreen.RenderScreen;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
@@ -8,6 +9,7 @@ import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.gui.widget.TextWidget;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.text.Text;
+import org.lwjgl.glfw.GLFW;
 
 import static net.The2019.NewBase.config.IntegerConfig.readValue;
 import static net.The2019.NewBase.config.IntegerConfig.saveValue;
@@ -51,7 +53,7 @@ public class ZoomEditScreen extends Screen {
         this.addDrawableChild(normalFovField);
 
         this.addDrawableChild(new ButtonWidget.Builder(Text.translatable("newbase.zoomscreen.save"), button -> saveValues())
-                .dimensions(x, y += spacing + 10, 100, 20).build());
+                .dimensions(this.width-120, y += spacing + 10, 100, 20).build());
     }
     private void saveValues() {
         try {
@@ -64,5 +66,16 @@ public class ZoomEditScreen extends Screen {
 
         } catch (NumberFormatException ignored) {
         }
+    }
+
+    @Override
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        if(keyCode == GLFW.GLFW_KEY_ENTER){
+            saveValues();
+        }
+        if(keyCode == GLFW.GLFW_KEY_ESCAPE){
+            mc.setScreen(new RenderScreen(mc.currentScreen, mc.options));
+        }
+        return true;
     }
 }

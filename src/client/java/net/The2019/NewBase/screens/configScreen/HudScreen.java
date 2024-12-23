@@ -9,6 +9,7 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextWidget;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.text.Text;
+import org.lwjgl.glfw.GLFW;
 
 import java.awt.*;
 
@@ -96,7 +97,10 @@ public class HudScreen extends Screen {
         }
     }
     @Override
-    public boolean shouldCloseOnEsc() {
-        return true;
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        if(keyCode == GLFW.GLFW_KEY_ESCAPE){
+            mc.setScreen(new ConfigScreen(mc.currentScreen, mc.options));
+        }
+        return false;
     }
 }

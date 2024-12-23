@@ -8,6 +8,7 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextWidget;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.text.Text;
+import org.lwjgl.glfw.GLFW;
 
 import static net.The2019.NewBase.config.ModuleConfig.readModule;
 import static net.The2019.NewBase.config.ModuleConfig.saveModuleState;
@@ -57,8 +58,12 @@ public class GenericScreen extends Screen {
             return Text.translatable("newbase.renderscreen.disabled");
         }
     }
+
     @Override
-    public boolean shouldCloseOnEsc() {
-        return true;
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        if(keyCode == GLFW.GLFW_KEY_ESCAPE){
+            mc.setScreen(new ConfigScreen(mc.currentScreen, mc.options));
+        }
+        return false;
     }
 }
