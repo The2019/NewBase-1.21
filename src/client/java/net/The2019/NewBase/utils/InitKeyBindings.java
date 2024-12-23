@@ -19,8 +19,6 @@ import static net.The2019.NewBase.config.ModuleStates.*;
 public class InitKeyBindings {
 
     private static final MinecraftClient mc = MinecraftClient.getInstance();
-    private static int oldFOV = 0;
-    private static boolean gotFOV = false;
 
     public static void initKeyBinds() {
         KeyBinding configScreen = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.configscreen", GLFW.GLFW_KEY_O, "newbase.name"));
@@ -62,7 +60,9 @@ public class InitKeyBindings {
                 }
             }else {
                 if(readModule(toggleZoom)){
-                    mc.options.getFov().setValue(readValue(normalFOV));
+                    if(readValue(normalFOV) != mc.options.getFov().getValue()) {
+                        mc.options.getFov().setValue(readValue(normalFOV));
+                    }
                 }
             }
         });

@@ -15,10 +15,10 @@
 	"icon": "assets/newbase/icon.png",
 	"environment": "client",
 	"entrypoints": {
-
 		"client": [
 			"net.The2019.NewBase.NewBaseClient"
-		]
+		],
+		"modmenu": [ "net.The2019.NewBase.modMenu.ModMenu" ]
 	},
 	"mixins": [
 		{
@@ -33,6 +33,6 @@
 		"fabric-api": "*"
 	},
 	"suggests": {
-		"another-mod": "*"
+		"modmenu": ">=11.0.3"
 	}
 }
