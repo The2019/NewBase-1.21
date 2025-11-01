@@ -1,4 +1,4 @@
-<img src="https://github.com/The2019/NewBase-1.21/blob/main/mod_icon.png" alt="Logo" width="200" height="200">
+<img src="https://github.com/The2019/NewBase-1.21/blob/main/mod_icon.png" alt="NewBase" width="200" height="200">
 
 
 # NewBase
@@ -8,42 +8,42 @@ A client sided utility mod for Minecraft 1.21.10 using the fabric API.
 
 ## Features
 
-- Option Menü
+- **Option Menü**
   - Hud Option Screen
   - Render Option Screen
   - Features Option Screen
-- Trident Helper
+- **Trident Helper**
   - Automatically sprints in the water if you use a trident
-- Yaw Set
+- **Yaw Set**
   - Sets your yaw to the nearest 90 degree angle
-- Armor Hud
+- **Armor Hud**
   - Show how damaged your armor is
-- Biome Display
-  - Shows you in wich biome you are
-- Coordinate Display
+- **Biome Display**
+  - Shows you in witch biome you are
+- **Coordinate Display**
   - Shows your current coordinates
-- FPS Display
+- **FPS Display**
   - Shows your FPS
-- Beehive Helper
+- **Beehive Helper**
   - Highlights nearby beehives
-- Fullbright
+- **Fullbright**
   - Full brightness all the time
-- Coordinates on Death
-  - Shows your deathcoordinates in the deathscreen
-- Chat Coordinates
+- **Coordinates on Death**
+  - Shows your Death Coordinates in the Death Screen
+- **Chat Coordinates**
   - Sends your coordinates in the chat
-- Pitch Yaw Display
+- **Pitch Yaw Display**
   - Shows your pitch and yaw
-- Day Counter
+- **Day Counter**
   - Shows how many days the world has
-- Time Display
+- **Time Display**
   - Shows you the time
-- Zoom
+- **Zoom**
   - Added a zoom feature
-- No Fog
+- **No Fog**
   - Removes all the Fog 
-- No Rain
-  - Removes the Rain Particals
+- **No Rain**
+  - Removes the Rain Particles
 
 
 
