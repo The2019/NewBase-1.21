@@ -6,6 +6,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextWidget;
+import net.minecraft.client.input.KeyInput;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
@@ -43,7 +44,7 @@ public class GenericScreen extends Screen {
     }
 
     private void addTextButton(String key, String module, int x, int y, int buttonWidth, int buttonHeight) {
-        this.addDrawable(new TextWidget(x, y, 500, 20, Text.translatable("newbase.genericscreen." + key), mc.textRenderer).alignLeft());
+        this.addDrawable(new TextWidget(x, y, 500, 20, Text.translatable("newbase.genericscreen." + key), mc.textRenderer));
         this.addDrawableChild(new ButtonWidget.Builder(toggleModule(module), button -> {
             saveModuleState(module, !readModule(module));
             mc.setScreen(new GenericScreen(mc.currentScreen, mc.options));
@@ -60,8 +61,8 @@ public class GenericScreen extends Screen {
     }
 
     @Override
-    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-        if(keyCode == GLFW.GLFW_KEY_ESCAPE){
+    public boolean keyPressed(KeyInput input) {
+        if(input.key() == GLFW.GLFW_KEY_ESCAPE){
             mc.setScreen(new ConfigScreen(mc.currentScreen, mc.options));
         }
         return false;

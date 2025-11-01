@@ -25,6 +25,6 @@ public class WorldRender {
 
     public static void drawBox(MatrixStack matrices, VertexConsumerProvider vertexConsumers, double minX, double minY, double minZ, double maxX, double maxY, double maxZ, float red, float green, float blue, float alpha) {
         VertexConsumer vertexConsumer = vertexConsumers.getBuffer(RenderLayer.getLines());
-        WorldRenderer.drawBox(matrices, vertexConsumer, minX, minY, minZ, maxX, maxY, maxZ, red, green, blue, alpha);
+        //WorldRenderer.drawBox(matrices, vertexConsumer, minX, minY, minZ, maxX, maxY, maxZ, red, green, blue, alpha);
     }
 }

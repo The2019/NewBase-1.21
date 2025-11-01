@@ -1,4 +1,5 @@
 package net.The2019.NewBase.mixin;
+
 import net.minecraft.client.render.WorldRenderer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -9,13 +10,13 @@ import static net.The2019.NewBase.config.ModuleConfig.readModule;
 import static net.The2019.NewBase.config.ModuleStates.noFog;
 
 @Mixin(WorldRenderer.class)
-public class MixinBackgroundRendererNoFog {
+public class WeatherMixin {
 
-    // Cancel rain rendering
     @Inject(method = "renderWeather", at = @At("HEAD"), cancellable = true)
     private void onRenderWeather(CallbackInfo ci) {
-        if (readModule(noFog)) {
+        /*if (readModule(noFog)) {
             ci.cancel();
         }
+         */
     }
 }

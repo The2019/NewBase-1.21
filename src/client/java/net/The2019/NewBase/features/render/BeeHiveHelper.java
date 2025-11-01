@@ -1,5 +1,5 @@
 package net.The2019.NewBase.features.render;
-
+/*
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.minecraft.block.entity.BeehiveBlockEntity;
@@ -38,3 +38,5 @@ public class BeeHiveHelper {
         }
     }
 }
+
+ */

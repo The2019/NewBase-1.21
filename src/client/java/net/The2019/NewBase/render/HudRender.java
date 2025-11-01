@@ -57,6 +57,7 @@ public class HudRender {
 
 
     public static void renderArmorPiece(DrawContext drawContext, ItemStack itemStack, int x, int y, float scale) {
+        /*
         if (!itemStack.isEmpty()) {
 
             drawContext.getMatrices().push();
@@ -99,5 +100,7 @@ public class HudRender {
 
             drawContext.getMatrices().pop();
         }
+
+         */
     }
 }

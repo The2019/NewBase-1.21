@@ -17,8 +17,7 @@
 	"entrypoints": {
 		"client": [
 			"net.The2019.NewBase.NewBaseClient"
-		],
-		"modmenu": [ "net.The2019.NewBase.modMenu.ModMenu" ]
+		]
 	},
 	"mixins": [
 		{
@@ -27,12 +26,9 @@
 		}
 	],
 	"depends": {
-		"fabricloader": ">=0.16.9",
-		"minecraft": "~1.21.1",
-		"java": ">=21",
-		"fabric-api": "*"
-	},
-	"suggests": {
-		"modmenu": ">=11.0.3"
+      "fabricloader": ">=0.17.3",
+      "minecraft": "~1.21.10",
+      "java": ">=21",
+      "fabric-api": "*"
 	}
 }

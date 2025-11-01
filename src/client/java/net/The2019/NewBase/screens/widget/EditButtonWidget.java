@@ -1,6 +1,9 @@
 package net.The2019.NewBase.screens.widget;
 
+import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.client.gl.RenderPipelines;
+import net.minecraft.client.gui.Click;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.narration.NarrationMessageBuilder;
 import net.minecraft.client.gui.widget.ClickableWidget;
@@ -25,17 +28,15 @@ public class EditButtonWidget extends ClickableWidget {
     @Override
     protected void renderWidget(DrawContext context, int mouseX, int mouseY, float delta) {
         if (isHovered()) {
-            RenderSystem.setShaderTexture(0 ,editButton);
-            context.drawTexture(editButton, this.getX(), this.getY(), 0 , 0, this.width, this.height, 20, 20);
-            context.drawBorder(this.getX(), this.getY(), this.width, this.height, Color.WHITE.getRGB());
+            context.drawTexture(RenderPipelines.GUI_TEXTURED, editButton, this.getX(), this.getY(), 0 , 0, this.width, this.height, 20, 20 );
+            //context.drawBorder(this.getX(), this.getY(), this.width, this.height, Color.WHITE.getRGB());
         } else {
-            RenderSystem.setShaderTexture(0 ,editButton);
-            context.drawTexture(editButton, this.getX(), this.getY(), 0 , 0, this.width, this.height, 20, 20);
+            context.drawTexture(RenderPipelines.GUI_TEXTURED, editButton, this.getX(), this.getY(), 0 , 0, this.width, this.height, 20, 20 );
         }
     }
 
     @Override
-    public void onClick(double mouseX, double mouseY) {
+    public void onClick(Click click, boolean doubled) {
         if (onClickCallback != null) {
             onClickCallback.accept(this);
         }

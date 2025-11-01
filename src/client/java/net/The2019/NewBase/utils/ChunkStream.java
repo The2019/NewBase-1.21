@@ -36,7 +36,7 @@ public class ChunkStream {
 
             return new ChunkPos(x, z);
 
-        }).limit(diameter * diameter).filter(c -> mc.world.isChunkLoaded(c.x, c.z)).map(c -> mc.world.getChunk(c.x, c.z)).filter(Objects::nonNull);
+        }).limit((long) diameter * diameter).filter(c -> mc.world.isChunkLoaded(c.x, c.z)).map(c -> mc.world.getChunk(c.x, c.z)).filter(Objects::nonNull);
 
         return stream;
     }

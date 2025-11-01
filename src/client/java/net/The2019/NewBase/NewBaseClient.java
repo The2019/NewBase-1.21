@@ -5,7 +5,7 @@ import net.The2019.NewBase.config.IntegerConfig;
 import net.The2019.NewBase.config.ModuleConfig;
 import net.The2019.NewBase.features.generic.TridentHelper;
 import net.The2019.NewBase.features.hud.ArmorHud;
-import net.The2019.NewBase.features.render.BeeHiveHelper;
+//import net.The2019.NewBase.features.render.BeeHiveHelper;
 import net.The2019.NewBase.render.HudRender;
 import net.The2019.NewBase.utils.InitKeyBindings;
 import net.The2019.NewBase.utils.PermissionLevel;
@@ -30,7 +30,7 @@ public class NewBaseClient implements ClientModInitializer {
 		ArmorHud.renderArmorHud();
 
 		//Render
-		BeeHiveHelper.highlightBeeHives();
+		//BeeHiveHelper.highlightBeeHives();
 
 		//generic
 		TridentHelper.tridentHelper();

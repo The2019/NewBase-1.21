@@ -16,7 +16,7 @@ public class PlayerListHudMixin {
     public void getPlayerName(PlayerListEntry entry, CallbackInfoReturnable<Text> cir) {
         String username = MinecraftClient.getInstance().getSession().getUsername();
 
-        if (entry.getProfile().getName().equals(username)) {
+        if (entry.getProfile().name().equals(username)) {
             if (username.equals("The2019")){
                 cir.setReturnValue(Text.literal("§c" + username + " §f[§a⌬§f]"));
             }else {

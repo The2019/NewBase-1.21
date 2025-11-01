@@ -2,14 +2,13 @@ package net.The2019.NewBase.screens.configScreen;
 
 import net.The2019.NewBase.screens.ConfigScreen;
 import net.The2019.NewBase.screens.editScreens.ZoomEditScreen;
-import net.The2019.NewBase.screens.widget.ColorSelectWidget;
 import net.The2019.NewBase.screens.widget.EditButtonWidget;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.GameModeSelectionScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextWidget;
+import net.minecraft.client.input.KeyInput;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
@@ -54,7 +53,7 @@ public class RenderScreen extends Screen {
     }
 
     private void addTextButton(String key, String module, int x, int y, int buttonWidth, int buttonHeight) {
-        this.addDrawable(new TextWidget(x, y, 500, 20, Text.translatable("newbase.renderscreen." + key), mc.textRenderer).alignLeft());
+        this.addDrawable(new TextWidget(x, y, 500, 20, Text.translatable("newbase.renderscreen." + key), mc.textRenderer));
         this.addDrawableChild(new ButtonWidget.Builder(toggleModule(module), button -> {
             saveModuleState(module, !readModule(module));
             mc.setScreen(new RenderScreen(mc.currentScreen, mc.options));
@@ -71,8 +70,8 @@ public class RenderScreen extends Screen {
         }
     }
     @Override
-    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-        if(keyCode == GLFW.GLFW_KEY_ESCAPE){
+    public boolean keyPressed(KeyInput input) {
+        if(input.key() == GLFW.GLFW_KEY_ESCAPE){
             mc.setScreen(new ConfigScreen(mc.currentScreen, mc.options));
         }
         return false;
