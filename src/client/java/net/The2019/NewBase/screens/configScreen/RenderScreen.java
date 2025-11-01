@@ -20,10 +20,6 @@ import static net.The2019.NewBase.config.ModuleConfig.saveModuleState;
 import static net.The2019.NewBase.config.ModuleStates.*;
 
 public class RenderScreen extends Screen {
-    private final Screen parent;
-    private final GameOptions settings;
-    private static int x = 20;
-    private static int y = 30;
     private static final MinecraftClient mc = MinecraftClient.getInstance();
     private static final int buttonWidth = 200;
     private static final int buttonHeight = 20;
@@ -31,8 +27,6 @@ public class RenderScreen extends Screen {
 
     public RenderScreen(Screen parent, GameOptions settings) {
         super(Text.translatable("newbase.hudscreen.name"));
-        this.parent = parent;
-        this.settings = settings;
     }
 
     @Override
@@ -40,7 +34,8 @@ public class RenderScreen extends Screen {
 
         this.addDrawableChild(new ButtonWidget.Builder(Text.translatable("newbase.renderscreen.back"), button -> {mc.setScreen(new ConfigScreen(mc.currentScreen, mc.options));}).dimensions(17, 20, 100,20).build());
 
-        y = 30;
+        int y = 30;
+        int x = 20;
 
         addTextButton("beehiverender", beehiveRender, x, y += spacing, buttonWidth, buttonHeight);
         addTextButton("fullbrightrender", fullBrightRender, x, y += spacing, buttonWidth, buttonHeight);

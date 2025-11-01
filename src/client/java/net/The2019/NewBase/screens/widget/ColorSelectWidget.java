@@ -4,7 +4,6 @@ import net.minecraft.client.gui.Click;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.narration.NarrationMessageBuilder;
 import net.minecraft.client.gui.widget.ClickableWidget;
-import net.minecraft.client.render.MapRenderState;
 import net.minecraft.text.Text;
 
 import java.awt.*;
@@ -24,10 +23,10 @@ public class ColorSelectWidget extends ClickableWidget {
     @Override
     protected void renderWidget(DrawContext context, int mouseX, int mouseY, float delta) {
         if (isHovered()) {
-            //context.drawBorder(this.getX(), this.getY(), this.width, this.height, Color.WHITE.getRGB());
+            context.drawStrokedRectangle(this.getX(), this.getY(), this.width, this.height, Color.WHITE.getRGB());
             context.fill(this.getX() + 1, this.getY() + 1, this.getX() + this.width - 1, this.getY() + this.height - 1, color.getRGB());
         } else {
-            //context.drawBorder(this.getX(), this.getY(), this.width, this.height, Color.BLACK.getRGB());
+            context.drawStrokedRectangle(this.getX(), this.getY(), this.width, this.height, Color.BLACK.getRGB());
             context.fill(this.getX() + 1, this.getY() + 1, this.getX() + this.width - 1, this.getY() + this.height - 1, color.getRGB());
             /*
             context.drawMap(new MapRenderState());

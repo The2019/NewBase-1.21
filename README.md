@@ -3,7 +3,7 @@
 
 # NewBase
 
-A client sided utility mod for Minecraft 1.21.1 using the fabric API.
+A client sided utility mod for Minecraft 1.21.10 using the fabric API.
 
 
 ## Features

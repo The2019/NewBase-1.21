@@ -22,12 +22,8 @@ import static net.The2019.NewBase.config.ModuleStates.*;
 
 
 public class HudScreen extends Screen {
-    private final Screen parent;
-    private final GameOptions settings;
     private static final int x = 20;
-    private static int y = 60;
     private static final int yWidget = 50;
-    private static int xWidget = 0;
     private static final MinecraftClient mc = MinecraftClient.getInstance();
     private static final int buttonWidth = 200;
     private static final int buttonHeight = 20;
@@ -35,8 +31,6 @@ public class HudScreen extends Screen {
 
     public HudScreen(Screen parent, GameOptions settings) {
         super(Text.translatable("newbase.hudscreen.name"));
-        this.parent = parent;
-        this.settings = settings;
     }
 
     @Override
@@ -44,12 +38,12 @@ public class HudScreen extends Screen {
 
         this.addDrawableChild(new ButtonWidget.Builder(Text.translatable("newbase.hudscreen.back"), button -> {mc.setScreen(new ConfigScreen(mc.currentScreen, mc.options));}).dimensions(17, 20, 100,20).build());
 
-        y = 60;
-        xWidget = this.width -40;
+        int y = 60;
+        int xWidget = this.width - 40;
 
         this.addDrawable(new TextWidget(x, yWidget, 500, 20, Text.translatable("newbase.hudscreen.changecolor"), mc.textRenderer));
 
-        this.addDrawableChild(new ColorSelectWidget(xWidget , yWidget, 20, 20, Text.literal(""), Color.GREEN, colorSelectWidget -> {
+        this.addDrawableChild(new ColorSelectWidget(xWidget, yWidget, 20, 20, Text.literal(""), Color.GREEN, colorSelectWidget -> {
             saveColor(hudColor, Color.GREEN);
         }));
         this.addDrawableChild(new ColorSelectWidget(xWidget -= spacing , yWidget, 20, 20, Text.literal(""), Color.BLACK, colorSelectWidget -> {

@@ -9,14 +9,10 @@ import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 
 public class ChatCoordinatesScreen extends Screen {
-    private final Screen parent;
-    private final GameOptions settings;
     private static final MinecraftClient mc = MinecraftClient.getInstance();
 
     public ChatCoordinatesScreen(Screen parent, GameOptions gameOptions) {
         super(Text.translatable("newbase.chatcoordinatesscreen.name"));
-        this.parent = parent;
-        this.settings = gameOptions;
     }
 
     @Override
@@ -36,10 +32,6 @@ public class ChatCoordinatesScreen extends Screen {
         this.addDrawable(new TextWidget(this.width / 2 - 250, this.height / 2 - 30, 500, 20, Text.translatable("newbase.chatcoordinatesscreen.message"), textRenderer));
         this.addDrawableChild(yesButton);
         this.addDrawableChild(noButton);
-    }
-    @Override
-    public boolean shouldCloseOnEsc() {
-        return true;
     }
 }
 

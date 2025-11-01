@@ -13,16 +13,12 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
 public class ConfigScreen extends Screen {
-    private final Screen parent;
-    private final GameOptions settings;
     private static final MinecraftClient mc = MinecraftClient.getInstance();
     private int y = 50;
     private int x = 20;
 
     public ConfigScreen(Screen parent, GameOptions gameOptions) {
         super(Text.translatable("newbase.configscreen.name"));
-        this.parent = parent;
-        this.settings = gameOptions;
     }
 
     @Override

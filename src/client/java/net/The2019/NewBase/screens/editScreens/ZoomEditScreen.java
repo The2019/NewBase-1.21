@@ -1,6 +1,5 @@
 package net.The2019.NewBase.screens.editScreens;
 
-import net.The2019.NewBase.screens.ConfigScreen;
 import net.The2019.NewBase.screens.configScreen.RenderScreen;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
@@ -19,8 +18,6 @@ import static net.The2019.NewBase.config.IntegerStates.zoomFOV;
 
 public class ZoomEditScreen extends Screen {
 
-    private final Screen parent;
-    private final GameOptions settings;
     private static final MinecraftClient mc = MinecraftClient.getInstance();
     private static int x = 20;
     private static int y = 30;
@@ -30,8 +27,6 @@ public class ZoomEditScreen extends Screen {
 
     public ZoomEditScreen(Screen parent, GameOptions settings) {
         super(Text.translatable("newbase.zoomscreen.name"));
-        this.parent = parent;
-        this.settings = settings;
     }
 
     @Override

@@ -1,7 +1,5 @@
 package net.The2019.NewBase.screens.widget;
 
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gl.RenderPipelines;
 import net.minecraft.client.gui.Click;
 import net.minecraft.client.gui.DrawContext;
@@ -29,7 +27,7 @@ public class EditButtonWidget extends ClickableWidget {
     protected void renderWidget(DrawContext context, int mouseX, int mouseY, float delta) {
         if (isHovered()) {
             context.drawTexture(RenderPipelines.GUI_TEXTURED, editButton, this.getX(), this.getY(), 0 , 0, this.width, this.height, 20, 20 );
-            //context.drawBorder(this.getX(), this.getY(), this.width, this.height, Color.WHITE.getRGB());
+            context.drawStrokedRectangle(this.getX(), this.getY(), this.width, this.height, Color.WHITE.getRGB());
         } else {
             context.drawTexture(RenderPipelines.GUI_TEXTURED, editButton, this.getX(), this.getY(), 0 , 0, this.width, this.height, 20, 20 );
         }
