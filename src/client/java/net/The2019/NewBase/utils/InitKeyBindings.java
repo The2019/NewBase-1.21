@@ -25,15 +25,17 @@ public class InitKeyBindings {
 
         KeyBinding chatCoordinates = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.sendcoordinates", GLFW.GLFW_KEY_P, KeyBinding.Category.INVENTORY));
 
-        KeyBinding toggleYawSet = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.toggleyaw", GLFW.GLFW_KEY_J, KeyBinding.Category.INVENTORY));
+        KeyBinding toggleYawSet = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.toggleyaw", GLFW.GLFW_KEY_UNKNOWN, KeyBinding.Category.INVENTORY));
 
-        KeyBinding toggleCameraKey = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglecamera", GLFW.GLFW_KEY_K, KeyBinding.Category.INVENTORY));
+        KeyBinding toggleCameraKey = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglecamera", GLFW.GLFW_KEY_UNKNOWN, KeyBinding.Category.INVENTORY));
 
         KeyBinding toggleFullBright = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglefullbright", GLFW.GLFW_KEY_H, KeyBinding.Category.INVENTORY));
 
-        KeyBinding toggleNoFog = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglenofog", GLFW.GLFW_KEY_U, KeyBinding.Category.INVENTORY));
+        KeyBinding toggleNoFog = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglenofog", GLFW.GLFW_KEY_UNKNOWN, KeyBinding.Category.INVENTORY));
 
         KeyBinding toggleZoomKey = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglezoom", GLFW.GLFW_KEY_V, KeyBinding.Category.INVENTORY));
+
+        KeyBinding toggleNoRain = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglenorain", GLFW.GLFW_KEY_UNKNOWN, KeyBinding.Category.INVENTORY));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (configScreen.wasPressed()) {
@@ -53,6 +55,9 @@ public class InitKeyBindings {
             }
             if (toggleNoFog.wasPressed()) {
                 saveModuleState(noFog, !readModule(noFog));
+            }
+            if (toggleNoRain.wasPressed()) {
+                saveModuleState(noRain, !readModule(noRain));
             }
             if (toggleZoomKey.isPressed()) {
                 if(readModule(toggleZoom)){

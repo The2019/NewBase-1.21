@@ -7,16 +7,15 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import static net.The2019.NewBase.config.ModuleConfig.readModule;
-import static net.The2019.NewBase.config.ModuleStates.noFog;
+import static net.The2019.NewBase.config.ModuleStates.noRain;
 
 @Mixin(WorldRenderer.class)
 public class WeatherMixin {
 
     @Inject(method = "renderWeather", at = @At("HEAD"), cancellable = true)
     private void onRenderWeather(CallbackInfo ci) {
-        /*if (readModule(noFog)) {
+        if (readModule(noRain)) {
             ci.cancel();
         }
-         */
     }
 }

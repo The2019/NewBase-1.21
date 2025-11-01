@@ -45,6 +45,7 @@ public class RenderScreen extends Screen {
         addTextButton("beehiverender", beehiveRender, x, y += spacing, buttonWidth, buttonHeight);
         addTextButton("fullbrightrender", fullBrightRender, x, y += spacing, buttonWidth, buttonHeight);
         addTextButton("nofog", noFog, x, y += spacing, buttonWidth, buttonHeight);
+        addTextButton("norain", noRain, x, y += spacing, buttonWidth, buttonHeight);
         addTextButton("armorHud", armorHud, x, y += spacing, buttonWidth, buttonHeight);
         addTextButton("toggleZoom", toggleZoom, x, y += spacing, buttonWidth, buttonHeight);
         this.addDrawableChild(new EditButtonWidget(this.width - 30, y, 20, 20, Text.of(""), editButtonWidget -> {

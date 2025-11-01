@@ -78,20 +78,27 @@ public final class ModuleConfig {
     private static void writeDefaultValues() {
         cachedConfig = new JsonObject();
 
+        //Hud
         cachedConfig.addProperty(ModuleStates.coordinateDisplay, true);
         cachedConfig.addProperty(ModuleStates.biomeDisplay, true);
         cachedConfig.addProperty(ModuleStates.fpsDisplay, true);
-        cachedConfig.addProperty(ModuleStates.beehiveRender, false);
-        cachedConfig.addProperty(ModuleStates.fullBrightRender, true);
-        cachedConfig.addProperty(ModuleStates.tridentHelper, true);
-        cachedConfig.addProperty(ModuleStates.deathcoords, true);
-        cachedConfig.addProperty(ModuleStates.noFog, true);
-        cachedConfig.addProperty(ModuleStates.toggleCamera, true);
-        cachedConfig.addProperty(ModuleStates.armorHud, true);
         cachedConfig.addProperty(ModuleStates.pitchYaw, true);
         cachedConfig.addProperty(ModuleStates.dayCount, true);
         cachedConfig.addProperty(ModuleStates.realLiveTime, true);
+
+
+        //Renderer
+        cachedConfig.addProperty(ModuleStates.beehiveRender, false);
+        cachedConfig.addProperty(ModuleStates.fullBrightRender, true);
+        cachedConfig.addProperty(ModuleStates.noFog, true);
+        cachedConfig.addProperty(ModuleStates.toggleCamera, true);
+        cachedConfig.addProperty(ModuleStates.armorHud, true);
         cachedConfig.addProperty(ModuleStates.toggleZoom, true);
+        cachedConfig.addProperty(ModuleStates.noRain, false);
+
+        //General
+        cachedConfig.addProperty(ModuleStates.tridentHelper, true);
+        cachedConfig.addProperty(ModuleStates.deathcoords, true);
 
         saveConfigToFile();
     }

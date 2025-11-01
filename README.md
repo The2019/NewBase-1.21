@@ -40,6 +40,10 @@ A client sided utility mod for Minecraft 1.21.1 using the fabric API.
   - Shows you the time
 - Zoom
   - Added a zoom feature
+- No Fog
+  - Removes all the Fog 
+- No Rain
+  - Removes the Rain Particals
 
 
 

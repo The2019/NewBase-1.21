@@ -32,6 +32,7 @@
   "newbase.renderscreen.beehiverender": "Toggle Beehive Helper",
   "newbase.renderscreen.fullbrightrender": "Toggle Full Bright",
   "newbase.renderscreen.nofog": "Toggle NoFog",
+  "newbase.renderscreen.norain": "Toggle NoRain",
   "newbase.renderscreen.armorHud": "Toggle Armor Hud",
   "newbase.renderscreen.toggleZoom": "Toggle Zoom",
   "newbase.renderscreen.Edit": "Edit",
@@ -61,5 +62,6 @@
   "newbase.keybinds.togglecamera": "Toggle Camera",
   "newbase.keybinds.togglefullbright": "Toggle Full Bright",
   "newbase.keybinds.togglenofog": "Toggle No Fog",
+  "newbase.keybinds.togglenorain": "Toggle No Rain",
   "newbase.keybinds.togglezoom": "Toggle Zoom"
 }

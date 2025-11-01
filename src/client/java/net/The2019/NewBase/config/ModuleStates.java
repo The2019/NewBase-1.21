@@ -16,6 +16,7 @@ public class ModuleStates {
     public static String toggleCamera = "togglecamera";
     public static String armorHud = "togglearmorhud";
     public static String toggleZoom = "togglezzoom";
+    public static String noRain = "norain";
 
     //Generic
     public static String tridentHelper = "trident";
