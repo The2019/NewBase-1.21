@@ -1,8 +1,5 @@
-package net.The2019.NewBase.screens;
+package net.the2019.newbase.screens;
 
-import net.The2019.NewBase.screens.configScreen.GenericScreen;
-import net.The2019.NewBase.screens.configScreen.HudScreen;
-import net.The2019.NewBase.screens.configScreen.RenderScreen;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.tooltip.Tooltip;
@@ -11,6 +8,9 @@ import net.minecraft.client.gui.widget.TextWidget;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.the2019.newbase.screens.configScreen.GenericScreen;
+import net.the2019.newbase.screens.configScreen.HudScreen;
+import net.the2019.newbase.screens.configScreen.RenderScreen;
 
 public class ConfigScreen extends Screen {
     private static final MinecraftClient mc = MinecraftClient.getInstance();

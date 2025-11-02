@@ -1,14 +1,15 @@
-package net.The2019.NewBase.mixin;
+package net.the2019.newbase.mixin;
 
 import net.minecraft.client.render.fog.FogRenderer;
+
+import static net.the2019.newbase.config.ModuleConfig.readModule;
+import static net.the2019.newbase.config.ModuleStates.noFog;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import static net.The2019.NewBase.config.ModuleConfig.readModule;
-import static net.The2019.NewBase.config.ModuleStates.noFog;
 
 @Mixin(FogRenderer.class)
 public class NoFogMixin {

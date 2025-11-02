@@ -1,4 +1,4 @@
-package net.The2019.NewBase.config;
+package net.the2019.newbase.config;
 
 public class ModuleStates {
     //Hud

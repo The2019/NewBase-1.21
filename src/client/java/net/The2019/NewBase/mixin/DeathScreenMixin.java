@@ -1,4 +1,4 @@
-package net.The2019.NewBase.mixin;
+package net.the2019.newbase.mixin;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
@@ -13,10 +13,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.awt.*;
+import static net.the2019.newbase.config.ModuleConfig.readModule;
+import static net.the2019.newbase.config.ModuleStates.deathcoords;
 
-import static net.The2019.NewBase.config.ModuleConfig.readModule;
-import static net.The2019.NewBase.config.ModuleStates.deathcoords;
+import java.awt.*;
 
 @Mixin(DeathScreen.class)
 public class DeathScreenMixin {

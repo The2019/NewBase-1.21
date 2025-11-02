@@ -1,11 +1,11 @@
-package net.The2019.NewBase.features.generic;
+package net.the2019.newbase.features.generic;
+
+import static net.the2019.newbase.config.ModuleConfig.readModule;
+import static net.the2019.newbase.config.ModuleStates.tridentHelper;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.Items;
-
-import static net.The2019.NewBase.config.ModuleConfig.readModule;
-import static net.The2019.NewBase.config.ModuleStates.tridentHelper;
 
 public class TridentHelper {
     private static final MinecraftClient mc = MinecraftClient.getInstance();

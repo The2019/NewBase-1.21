@@ -1,12 +1,12 @@
-package net.The2019.NewBase.features.hud;
+package net.the2019.newbase.features.hud;
+import static net.the2019.newbase.config.ModuleConfig.readModule;
+import static net.the2019.newbase.config.ModuleStates.armorHud;
+import static net.the2019.newbase.render.HudRender.renderArmorPiece;
+
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
-
-import static net.The2019.NewBase.config.ModuleConfig.readModule;
-import static net.The2019.NewBase.config.ModuleStates.armorHud;
-import static net.The2019.NewBase.render.HudRender.renderArmorPiece;
 
 
 public class ArmorHud {

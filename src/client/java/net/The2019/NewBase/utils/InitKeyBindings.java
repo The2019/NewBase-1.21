@@ -1,22 +1,23 @@
-package net.The2019.NewBase.utils;
+package net.the2019.newbase.utils;
 
-import net.The2019.NewBase.features.generic.YawSet;
-import net.The2019.NewBase.screens.ChatCoordinatesScreen;
-import net.The2019.NewBase.screens.ConfigScreen;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.util.Identifier;
-import org.lwjgl.glfw.GLFW;
+import net.the2019.newbase.features.generic.YawSet;
+import net.the2019.newbase.screens.ChatCoordinatesScreen;
+import net.the2019.newbase.screens.ConfigScreen;
 
-import static net.The2019.NewBase.NewBaseClient.MOD_ID;
-import static net.The2019.NewBase.config.IntegerConfig.readValue;
-import static net.The2019.NewBase.config.IntegerStates.normalFOV;
-import static net.The2019.NewBase.config.IntegerStates.zoomFOV;
-import static net.The2019.NewBase.config.ModuleConfig.readModule;
-import static net.The2019.NewBase.config.ModuleConfig.saveModuleState;
-import static net.The2019.NewBase.config.ModuleStates.*;
+import static net.the2019.newbase.NewBaseClient.MOD_ID;
+import static net.the2019.newbase.config.IntegerConfig.readValue;
+import static net.the2019.newbase.config.IntegerStates.normalFOV;
+import static net.the2019.newbase.config.IntegerStates.zoomFOV;
+import static net.the2019.newbase.config.ModuleConfig.readModule;
+import static net.the2019.newbase.config.ModuleConfig.saveModuleState;
+import static net.the2019.newbase.config.ModuleStates.*;
+
+import org.lwjgl.glfw.GLFW;
 
 public class InitKeyBindings {
 

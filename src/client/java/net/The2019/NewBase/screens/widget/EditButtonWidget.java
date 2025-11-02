@@ -1,4 +1,4 @@
-package net.The2019.NewBase.screens.widget;
+package net.the2019.newbase.screens.widget;
 
 import net.minecraft.client.gl.RenderPipelines;
 import net.minecraft.client.gui.Click;
@@ -8,10 +8,10 @@ import net.minecraft.client.gui.widget.ClickableWidget;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
+import static net.the2019.newbase.NewBaseClient.MOD_ID;
+
 import java.awt.*;
 import java.util.function.Consumer;
-
-import static net.The2019.NewBase.NewBaseClient.MOD_ID;
 
 public class EditButtonWidget extends ClickableWidget {
 

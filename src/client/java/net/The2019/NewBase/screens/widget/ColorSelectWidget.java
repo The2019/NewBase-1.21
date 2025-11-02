@@ -1,4 +1,4 @@
-package net.The2019.NewBase.screens.widget;
+package net.the2019.newbase.screens.widget;
 
 import net.minecraft.client.gui.Click;
 import net.minecraft.client.gui.DrawContext;

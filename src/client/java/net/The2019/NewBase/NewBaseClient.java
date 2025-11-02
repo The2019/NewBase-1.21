@@ -1,16 +1,16 @@
-package net.The2019.NewBase;
+package net.the2019.newbase;
 
-import net.The2019.NewBase.config.ColorConfig;
-import net.The2019.NewBase.config.IntegerConfig;
-import net.The2019.NewBase.config.ModuleConfig;
-import net.The2019.NewBase.features.generic.TridentHelper;
-import net.The2019.NewBase.features.hud.ArmorHud;
-import net.The2019.NewBase.features.render.BeeHiveHelper;
-import net.The2019.NewBase.features.render.MapRenderer;
-import net.The2019.NewBase.render.HudRender;
-import net.The2019.NewBase.utils.InitKeyBindings;
-import net.The2019.NewBase.utils.PermissionLevel;
 import net.fabricmc.api.ClientModInitializer;
+import net.the2019.newbase.config.ColorConfig;
+import net.the2019.newbase.config.IntegerConfig;
+import net.the2019.newbase.config.ModuleConfig;
+import net.the2019.newbase.features.generic.TridentHelper;
+import net.the2019.newbase.features.hud.ArmorHud;
+import net.the2019.newbase.features.render.BeeHiveHelper;
+import net.the2019.newbase.features.render.MapRenderer;
+import net.the2019.newbase.render.HudRender;
+import net.the2019.newbase.utils.InitKeyBindings;
+import net.the2019.newbase.utils.PermissionLevel;
 
 public class NewBaseClient implements ClientModInitializer {
 
@@ -26,7 +26,7 @@ public class NewBaseClient implements ClientModInitializer {
 		InitKeyBindings.initKeyBinds();
 
 		//Hud
-		HudRender.registerHudRendering();
+		HudRender.run();
 		ArmorHud.renderArmorHud();
 
 		//Render

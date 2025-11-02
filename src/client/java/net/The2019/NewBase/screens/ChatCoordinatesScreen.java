@@ -1,4 +1,4 @@
-package net.The2019.NewBase.screens;
+package net.the2019.newbase.screens;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;

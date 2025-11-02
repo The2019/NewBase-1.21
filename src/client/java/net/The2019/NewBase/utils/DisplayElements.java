@@ -1,4 +1,4 @@
-package net.The2019.NewBase.utils;
+package net.the2019.newbase.utils;
 
 import net.minecraft.text.Text;
 

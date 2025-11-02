@@ -1,4 +1,4 @@
-package net.The2019.NewBase.mixin;
+package net.the2019.newbase.mixin;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.hud.PlayerListHud;

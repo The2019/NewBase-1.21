@@ -1,4 +1,4 @@
-package net.The2019.NewBase.features.render;
+package net.the2019.newbase.features.render;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.block.entity.BeehiveBlockEntity;
@@ -7,13 +7,13 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 
+import static net.the2019.newbase.config.ModuleConfig.readModule;
+import static net.the2019.newbase.config.ModuleStates.beehiveRender;
+import static net.the2019.newbase.render.BoxRender.addBox;
+import static net.the2019.newbase.utils.ChunkStream.getBlockEntities;
+
 import java.util.ArrayList;
 import java.util.stream.Collectors;
-
-import static net.The2019.NewBase.config.ModuleConfig.readModule;
-import static net.The2019.NewBase.config.ModuleStates.beehiveRender;
-import static net.The2019.NewBase.render.BoxRender.addBox;
-import static net.The2019.NewBase.utils.ChunkStream.getBlockEntities;
 public class BeeHiveHelper {
 
     private static final MinecraftClient mc = MinecraftClient.getInstance();

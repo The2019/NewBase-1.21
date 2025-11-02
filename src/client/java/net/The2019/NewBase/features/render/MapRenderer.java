@@ -1,4 +1,4 @@
-package net.The2019.NewBase.features.render;
+package net.the2019.newbase.features.render;
 
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.block.MapColor;
@@ -51,7 +51,8 @@ public class MapRenderer {
 
         context.fill(mapX - 2, mapY - 2, mapX + MAP_SIZE + 2, mapY + MAP_SIZE + 2, 0xFF000000);
 
-        context.drawTexture(RenderPipelines.GUI_TEXTURED, mapTextureId, mapX, mapY, 0, 0, MAP_SIZE, MAP_SIZE, MAP_SIZE, MAP_SIZE);
+        context.drawTexture(RenderPipelines.GUI_TEXTURED, mapTextureId, mapX, mapY, 0, 0, MAP_SIZE, MAP_SIZE, MAP_SIZE,
+                MAP_SIZE);
 
         int centerX = mapX + MAP_SIZE / 2;
         int centerY = mapY + MAP_SIZE / 2;
@@ -85,9 +86,11 @@ public class MapRenderer {
     }
 
     private static int getColorAtPosition(World world, int x, int z) {
-        BlockPos.Mutable pos = new BlockPos.Mutable(x, world.getTopY(net.minecraft.world.Heightmap.Type.WORLD_SURFACE, x, z), z);
+        BlockPos.Mutable pos = new BlockPos.Mutable(x,
+                world.getTopY(net.minecraft.world.Heightmap.Type.WORLD_SURFACE, x, z), z);
 
-        for (int y = world.getTopY(net.minecraft.world.Heightmap.Type.WORLD_SURFACE, x, z); y >= world.getBottomY(); y--) {
+        for (int y = world.getTopY(net.minecraft.world.Heightmap.Type.WORLD_SURFACE, x, z); y >= world
+                .getBottomY(); y--) {
             pos.setY(y);
             if (!world.getBlockState(pos).isAir()) {
                 break;
@@ -95,7 +98,6 @@ public class MapRenderer {
         }
 
         MapColor mapColor = world.getBlockState(pos).getMapColor(world, pos);
-        int colorId = mapColor.id;
 
         int rgb = mapColor.color;
 
@@ -105,9 +107,9 @@ public class MapRenderer {
             shade = 0.7f + (y / 64.0f) * 0.3f;
         }
 
-        int r = (int)(((rgb >> 16) & 0xFF) * shade);
-        int g = (int)(((rgb >> 8) & 0xFF) * shade);
-        int b = (int)((rgb & 0xFF) * shade);
+        int r = (int) (((rgb >> 16) & 0xFF) * shade);
+        int g = (int) (((rgb >> 8) & 0xFF) * shade);
+        int b = (int) ((rgb & 0xFF) * shade);
 
         return 0xFF000000 | (b << 16) | (g << 8) | r;
     }

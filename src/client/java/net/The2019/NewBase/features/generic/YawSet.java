@@ -1,4 +1,4 @@
-package net.The2019.NewBase.features.generic;
+package net.the2019.newbase.features.generic;
 
 import net.minecraft.client.MinecraftClient;
 

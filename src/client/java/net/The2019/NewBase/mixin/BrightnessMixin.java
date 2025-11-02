@@ -1,13 +1,14 @@
-package net.The2019.NewBase.mixin;
+package net.the2019.newbase.mixin;
 
 import net.minecraft.world.dimension.DimensionType;
+
+import static net.the2019.newbase.config.ModuleConfig.readModule;
+import static net.the2019.newbase.config.ModuleStates.fullBrightRender;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import static net.The2019.NewBase.config.ModuleConfig.readModule;
-import static net.The2019.NewBase.config.ModuleStates.fullBrightRender;
 
 @Mixin(DimensionType.class)
 public abstract class BrightnessMixin {

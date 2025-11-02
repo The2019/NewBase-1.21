@@ -1,7 +1,5 @@
-package net.The2019.NewBase.screens.configScreen;
+package net.the2019.newbase.screens.configScreen;
 
-import net.The2019.NewBase.screens.ConfigScreen;
-import net.The2019.NewBase.screens.widget.ColorSelectWidget;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.tooltip.Tooltip;
@@ -10,15 +8,18 @@ import net.minecraft.client.gui.widget.TextWidget;
 import net.minecraft.client.input.KeyInput;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.text.Text;
+import net.the2019.newbase.screens.ConfigScreen;
+import net.the2019.newbase.screens.widget.ColorSelectWidget;
+
 import org.lwjgl.glfw.GLFW;
 
-import java.awt.*;
+import static net.the2019.newbase.config.ColorConfig.saveColor;
+import static net.the2019.newbase.config.ColorStates.hudColor;
+import static net.the2019.newbase.config.ModuleConfig.readModule;
+import static net.the2019.newbase.config.ModuleConfig.saveModuleState;
+import static net.the2019.newbase.config.ModuleStates.*;
 
-import static net.The2019.NewBase.config.ColorConfig.saveColor;
-import static net.The2019.NewBase.config.ColorStates.hudColor;
-import static net.The2019.NewBase.config.ModuleConfig.readModule;
-import static net.The2019.NewBase.config.ModuleConfig.saveModuleState;
-import static net.The2019.NewBase.config.ModuleStates.*;
+import java.awt.*;
 
 
 public class HudScreen extends Screen {

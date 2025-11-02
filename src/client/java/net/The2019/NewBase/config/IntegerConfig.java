@@ -1,19 +1,18 @@
-package net.The2019.NewBase.config;
+package net.the2019.newbase.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
+import static net.the2019.newbase.NewBaseClient.MOD_ID;
+import static net.the2019.newbase.config.IntegerStates.normalFOV;
+import static net.the2019.newbase.config.IntegerStates.zoomFOV;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Paths;
-
-import static net.The2019.NewBase.NewBaseClient.MOD_ID;
-import static net.The2019.NewBase.config.IntegerStates.normalFOV;
-import static net.The2019.NewBase.config.IntegerStates.zoomFOV;
 
 public final class IntegerConfig {
 

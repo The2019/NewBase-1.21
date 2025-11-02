@@ -1,6 +1,5 @@
-package net.The2019.NewBase.screens.configScreen;
+package net.the2019.newbase.screens.configScreen;
 
-import net.The2019.NewBase.screens.ConfigScreen;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.tooltip.Tooltip;
@@ -9,11 +8,13 @@ import net.minecraft.client.gui.widget.TextWidget;
 import net.minecraft.client.input.KeyInput;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.text.Text;
-import org.lwjgl.glfw.GLFW;
+import net.the2019.newbase.screens.ConfigScreen;
 
-import static net.The2019.NewBase.config.ModuleConfig.readModule;
-import static net.The2019.NewBase.config.ModuleConfig.saveModuleState;
-import static net.The2019.NewBase.config.ModuleStates.*;
+import static net.the2019.newbase.config.ModuleConfig.readModule;
+import static net.the2019.newbase.config.ModuleConfig.saveModuleState;
+import static net.the2019.newbase.config.ModuleStates.*;
+
+import org.lwjgl.glfw.GLFW;
 
 public class GenericScreen extends Screen {
     private static final MinecraftClient mc = MinecraftClient.getInstance();

@@ -1,6 +1,5 @@
-package net.The2019.NewBase.screens.editScreens;
+package net.the2019.newbase.screens.editScreens;
 
-import net.The2019.NewBase.screens.configScreen.RenderScreen;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -9,12 +8,14 @@ import net.minecraft.client.gui.widget.TextWidget;
 import net.minecraft.client.input.KeyInput;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.text.Text;
-import org.lwjgl.glfw.GLFW;
+import net.the2019.newbase.screens.configScreen.RenderScreen;
 
-import static net.The2019.NewBase.config.IntegerConfig.readValue;
-import static net.The2019.NewBase.config.IntegerConfig.saveValue;
-import static net.The2019.NewBase.config.IntegerStates.normalFOV;
-import static net.The2019.NewBase.config.IntegerStates.zoomFOV;
+import static net.the2019.newbase.config.IntegerConfig.readValue;
+import static net.the2019.newbase.config.IntegerConfig.saveValue;
+import static net.the2019.newbase.config.IntegerStates.normalFOV;
+import static net.the2019.newbase.config.IntegerStates.zoomFOV;
+
+import org.lwjgl.glfw.GLFW;
 
 public class ZoomEditScreen extends Screen {
 

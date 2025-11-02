@@ -1,11 +1,8 @@
-package net.The2019.NewBase.render;
+package net.the2019.newbase.render;
 
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.debug.DebugRenderer;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 
 import java.util.ArrayList;
@@ -35,7 +32,8 @@ public class BoxRender {
         boxes.add(new BoxToRender(box, red, green, blue, alpha));
     }
 
-    public static void renderAll(MatrixStack matrices, VertexConsumerProvider.Immediate vertexConsumers, double cameraX, double cameraY, double cameraZ) {
+    public static void renderAll(MatrixStack matrices, VertexConsumerProvider.Immediate vertexConsumers, double cameraX,
+            double cameraY, double cameraZ) {
         for (BoxToRender boxToRender : boxes) {
             matrices.push();
 
@@ -47,7 +45,8 @@ public class BoxRender {
 
             Box centeredBox = boxToRender.box.offset(-centerX, -centerY, -centerZ);
 
-            DebugRenderer.drawBox(matrices, vertexConsumers, centeredBox, boxToRender.red, boxToRender.green, boxToRender.blue, boxToRender.alpha);
+            DebugRenderer.drawBox(matrices, vertexConsumers, centeredBox, boxToRender.red, boxToRender.green,
+                    boxToRender.blue, boxToRender.alpha);
 
             matrices.pop();
         }
