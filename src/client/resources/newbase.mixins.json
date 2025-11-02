@@ -5,7 +5,7 @@
   "client": [
     "BrightnessMixin",
     "DeathScreenMixin",
-    "GameRendererMixin",
+    "DebugRendererMixin",
     "NoFogMixin",
     "PlayerListHudMixin",
     "WeatherMixin"

@@ -1,0 +1,20 @@
+package net.The2019.NewBase.mixin;
+
+import net.The2019.NewBase.render.BoxRender;
+import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.debug.DebugRenderer;
+import net.minecraft.client.util.math.MatrixStack;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+@Mixin(DebugRenderer.class)
+public class DebugRendererMixin {
+
+    @Inject(method = "render", at = @At("TAIL"))
+    private void renderCustomBox(MatrixStack matrices, net.minecraft.client.render.Frustum frustum, VertexConsumerProvider.Immediate vertexConsumers, double cameraX, double cameraY, double cameraZ, boolean renderShapes, CallbackInfo ci) {
+
+        BoxRender.renderAll(matrices, vertexConsumers, cameraX, cameraY, cameraZ);
+    }
+}

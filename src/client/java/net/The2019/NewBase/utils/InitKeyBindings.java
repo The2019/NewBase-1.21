@@ -7,8 +7,10 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
+import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
 
+import static net.The2019.NewBase.NewBaseClient.MOD_ID;
 import static net.The2019.NewBase.config.IntegerConfig.readValue;
 import static net.The2019.NewBase.config.IntegerStates.normalFOV;
 import static net.The2019.NewBase.config.IntegerStates.zoomFOV;
@@ -20,22 +22,24 @@ public class InitKeyBindings {
 
     private static final MinecraftClient mc = MinecraftClient.getInstance();
 
+    private static final KeyBinding.Category NEWBASE_CATEGORY = KeyBinding.Category.create(Identifier.of(MOD_ID, "name"));
+
     public static void initKeyBinds() {
-        KeyBinding configScreen = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.configscreen", GLFW.GLFW_KEY_O, KeyBinding.Category.INVENTORY));
+        KeyBinding configScreen = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.configscreen", GLFW.GLFW_KEY_O, NEWBASE_CATEGORY));
 
-        KeyBinding chatCoordinates = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.sendcoordinates", GLFW.GLFW_KEY_P, KeyBinding.Category.INVENTORY));
+        KeyBinding chatCoordinates = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.sendcoordinates", GLFW.GLFW_KEY_UNKNOWN, NEWBASE_CATEGORY));
 
-        KeyBinding toggleYawSet = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.toggleyaw", GLFW.GLFW_KEY_UNKNOWN, KeyBinding.Category.INVENTORY));
+        KeyBinding toggleYawSet = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.toggleyaw", GLFW.GLFW_KEY_UNKNOWN, NEWBASE_CATEGORY));
 
-        KeyBinding toggleCameraKey = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglecamera", GLFW.GLFW_KEY_UNKNOWN, KeyBinding.Category.INVENTORY));
+        KeyBinding toggleCameraKey = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglecamera", GLFW.GLFW_KEY_UNKNOWN, NEWBASE_CATEGORY));
 
-        KeyBinding toggleFullBright = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglefullbright", GLFW.GLFW_KEY_H, KeyBinding.Category.INVENTORY));
+        KeyBinding toggleFullBright = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglefullbright", GLFW.GLFW_KEY_H, NEWBASE_CATEGORY));
 
-        KeyBinding toggleNoFog = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglenofog", GLFW.GLFW_KEY_UNKNOWN, KeyBinding.Category.INVENTORY));
+        KeyBinding toggleNoFog = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglenofog", GLFW.GLFW_KEY_UNKNOWN, NEWBASE_CATEGORY));
 
-        KeyBinding toggleZoomKey = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglezoom", GLFW.GLFW_KEY_V, KeyBinding.Category.INVENTORY));
+        KeyBinding toggleZoomKey = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglezoom", GLFW.GLFW_KEY_V, NEWBASE_CATEGORY));
 
-        KeyBinding toggleNoRain = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglenorain", GLFW.GLFW_KEY_UNKNOWN, KeyBinding.Category.INVENTORY));
+        KeyBinding toggleNoRain = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglenorain", GLFW.GLFW_KEY_UNKNOWN, NEWBASE_CATEGORY));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (configScreen.wasPressed()) {

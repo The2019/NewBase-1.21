@@ -56,6 +56,7 @@
   "newbase.chatcoordinatesscreen.no": "§4No",
   "newbase.chatcoordinatesscreen.message": "Press §aYes §fto send Coordinates in the chat or §4No §fto return back to the game.",
 
+  "key.category.newbase.name": "NewBase",
   "newbase.keybinds.configscreen": "Open Config Screen",
   "newbase.keybinds.sendcoordinates": "Send Coordinates",
   "newbase.keybinds.toggleyaw": "Toggle Set Yaw",

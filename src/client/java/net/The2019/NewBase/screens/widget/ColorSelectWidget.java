@@ -28,9 +28,6 @@ public class ColorSelectWidget extends ClickableWidget {
         } else {
             context.drawStrokedRectangle(this.getX(), this.getY(), this.width, this.height, Color.BLACK.getRGB());
             context.fill(this.getX() + 1, this.getY() + 1, this.getX() + this.width - 1, this.getY() + this.height - 1, color.getRGB());
-            /*
-            context.drawMap(new MapRenderState());
-             */
         }
     }
 
