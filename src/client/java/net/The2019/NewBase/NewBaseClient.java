@@ -7,6 +7,7 @@ import net.The2019.NewBase.features.generic.TridentHelper;
 import net.The2019.NewBase.features.hud.ArmorHud;
 //import net.The2019.NewBase.features.render.BeeHiveHelper;
 import net.The2019.NewBase.render.HudRender;
+import net.The2019.NewBase.features.render.MapRenderer;
 import net.The2019.NewBase.utils.InitKeyBindings;
 import net.The2019.NewBase.utils.PermissionLevel;
 import net.fabricmc.api.ClientModInitializer;
@@ -35,7 +36,7 @@ public class NewBaseClient implements ClientModInitializer {
 		//generic
 		TridentHelper.tridentHelper();
 
-
+        MapRenderer.run();
 
 
 	}

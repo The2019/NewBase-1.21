@@ -1,6 +1,5 @@
 package net.The2019.NewBase.render;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.The2019.NewBase.config.ColorStates;
 import net.The2019.NewBase.features.hud.*;
 import net.The2019.NewBase.utils.DisplayElements;
@@ -8,11 +7,9 @@ import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.render.GameRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
