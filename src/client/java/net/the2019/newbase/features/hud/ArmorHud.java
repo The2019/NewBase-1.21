@@ -1,45 +1,45 @@
 package net.the2019.newbase.features.hud;
-import static net.the2019.newbase.config.ModuleConfig.readModule;
-import static net.the2019.newbase.config.ModuleStates.armorHud;
-import static net.the2019.newbase.render.HudRender.renderArmorPiece;
 
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.client.gl.RenderPipelines;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.item.ItemStack;
+
+import java.awt.*;
+
+import static net.the2019.newbase.render.HudRender.slot;
 
 
 public class ArmorHud {
 
-    private static final MinecraftClient mc = MinecraftClient.getInstance();
-    private static ItemStack helmet = ItemStack.EMPTY;
-    private static ItemStack chestpalte = ItemStack.EMPTY;
-    private static ItemStack leggings = ItemStack.EMPTY;
-    private static ItemStack boots = ItemStack.EMPTY;
-    private static int screenhight = 0;
-    private static final float scale = 1.5f;
+    public static void renderArmorPiece(DrawContext drawContext, ItemStack itemStack, int x, int y, float scale) {
+        if (!itemStack.isEmpty()) {
+            int scaledX = (int) (x / scale);
+            int scaledY = (int) (y / scale);
 
+            drawContext.drawItem(itemStack, scaledX, scaledY);
 
-    public static void renderArmorHud(){
+            if (itemStack.isDamageable()) {
+                int durability = itemStack.getMaxDamage() - itemStack.getDamage();
+                int maxDurability = itemStack.getMaxDamage();
 
-        HudRenderCallback.EVENT.register((drawContext, tickCounter) -> {
-            if (mc.player != null && readModule(armorHud)){
+                int barWidth = (int) (13 * ((double) durability / maxDurability));
 
-                helmet = mc.player.getEquippedStack(EquipmentSlot.HEAD);
-                chestpalte = mc.player.getEquippedStack(EquipmentSlot.CHEST);
-                leggings = mc.player.getEquippedStack(EquipmentSlot.LEGS);
-                boots = mc.player.getEquippedStack(EquipmentSlot.FEET);
+                int barColor;
 
-                screenhight = drawContext.getScaledWindowHeight();
+                if (durability <= maxDurability * 0.15) {
+                    barColor = Color.red.getRGB();
+                } else if (durability <= maxDurability * 0.25) {
+                    barColor = Color.yellow.getRGB();
+                } else {
+                    barColor = Color.green.getRGB();
+                }
+                int outlineColor = Color.darkGray.getRGB();
 
-                int x = 20;
-                int y = screenhight-40;
+                drawContext.drawTexture(RenderPipelines.GUI_TEXTURED, slot, scaledX-3, scaledY-3, 0, 0, 22, 30 , 22, 30);
 
-                renderArmorPiece(drawContext, helmet, x, y, scale);
-                renderArmorPiece(drawContext, chestpalte, (int) (x + 21*scale), y, scale);
-                renderArmorPiece(drawContext, leggings, (int) (x + 42*scale), y, scale);
-                renderArmorPiece(drawContext, boots, (int) (x + 63*scale), y, scale);
+                drawContext.fill(scaledX + 2, scaledY + 18, scaledX + 2 + barWidth, scaledY + 20, barColor);
+                drawContext.drawStrokedRectangle(scaledX + 1, scaledY + 17, 15, 4, outlineColor);
             }
-        });
+        }
     }
 }

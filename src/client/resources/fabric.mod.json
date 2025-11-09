@@ -9,14 +9,14 @@
 	],
 	"contact": {
 		"homepage": "https://github.com/The2019/",
-		"sources": "https://github.com/The2019/NewBase-1.21/"
+		"sources": "https://github.com/The2019/NewBase-1.21.10/"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/newbase/icon.png",
 	"environment": "client",
 	"entrypoints": {
 		"client": [
-			"net.The2019.NewBase.NewBaseClient"
+			"net.the2019.newbase.NewBaseClient"
 		]
 	},
 	"mixins": [
