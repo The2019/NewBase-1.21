@@ -72,10 +72,10 @@ public class HudRender {
             int x = 20;
             int y = screenHeight -40;
 
-            renderArmorPiece(drawContext, helmet, x, y, scale);
-            renderArmorPiece(drawContext, chestplate, (int) (x + 21*scale), y, scale);
-            renderArmorPiece(drawContext, leggings, (int) (x + 42*scale), y, scale);
-            renderArmorPiece(drawContext, boots, (int) (x + 63*scale), y, scale);
+            renderArmorPiece(drawContext, helmet, x, y);
+            renderArmorPiece(drawContext, chestplate, (x + 21), y);
+            renderArmorPiece(drawContext, leggings, (x + 42), y);
+            renderArmorPiece(drawContext, boots, (x + 63), y);
         }
     }
 }

@@ -11,12 +11,10 @@ import static net.the2019.newbase.render.HudRender.slot;
 
 public class ArmorHud {
 
-    public static void renderArmorPiece(DrawContext drawContext, ItemStack itemStack, int x, int y, float scale) {
+    public static void renderArmorPiece(DrawContext drawContext, ItemStack itemStack, int x, int y) {
         if (!itemStack.isEmpty()) {
-            int scaledX = (int) (x / scale);
-            int scaledY = (int) (y / scale);
 
-            drawContext.drawItem(itemStack, scaledX, scaledY);
+            drawContext.drawItem(itemStack, x, y);
 
             if (itemStack.isDamageable()) {
                 int durability = itemStack.getMaxDamage() - itemStack.getDamage();
@@ -35,10 +33,10 @@ public class ArmorHud {
                 }
                 int outlineColor = Color.darkGray.getRGB();
 
-                drawContext.drawTexture(RenderPipelines.GUI_TEXTURED, slot, scaledX-3, scaledY-3, 0, 0, 22, 30 , 22, 30);
+                drawContext.drawTexture(RenderPipelines.GUI_TEXTURED, slot, x-3, y-3, 0, 0, 22, 30 , 22, 30);
 
-                drawContext.fill(scaledX + 2, scaledY + 18, scaledX + 2 + barWidth, scaledY + 20, barColor);
-                drawContext.drawStrokedRectangle(scaledX + 1, scaledY + 17, 15, 4, outlineColor);
+                drawContext.fill(x + 2, y + 18, x + 2 + barWidth, y + 20, barColor);
+                drawContext.drawStrokedRectangle(x + 1, y + 17, 15, 4, outlineColor);
             }
         }
     }

@@ -44,6 +44,12 @@ A client sided utility mod for Minecraft 1.21.10 using the fabric API.
   - Removes all the Fog 
 - **No Rain**
   - Removes the Rain Particles
+- **Basic Math**
+  - added math commands 
+    - /add "Number 1" "Number 2"
+    - /subtract "Number 1" "Number 2"
+    - /multiply "Number 1" "Number 2"
+    - /divide "Number 1" "Number 2"
 
 
 
