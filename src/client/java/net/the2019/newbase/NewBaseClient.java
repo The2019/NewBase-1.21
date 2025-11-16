@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier;
 import net.the2019.newbase.config.ColorConfig;
 import net.the2019.newbase.config.IntegerConfig;
 import net.the2019.newbase.config.ModuleConfig;
-import net.the2019.newbase.features.generic.CommandRegister;
+import net.the2019.newbase.utils.CommandRegister;
 import net.the2019.newbase.features.generic.TridentHelper;
 import net.the2019.newbase.features.render.BeeHiveHelper;
 import net.the2019.newbase.features.render.MapRenderer;
@@ -31,6 +31,7 @@ public class NewBaseClient implements ClientModInitializer {
 
 		//Hud
         HudElementRegistry.attachElementBefore(VanillaHudElements.MISC_OVERLAYS, Identifier.of(MOD_ID, "hudrender"), HudRender::render);
+        HudElementRegistry.attachElementBefore(VanillaHudElements.MISC_OVERLAYS, Identifier.of(MOD_ID, "maprender"), MapRenderer::onRenderHud);
 		HudRender.initRender();
 
 		//Render
@@ -39,8 +40,6 @@ public class NewBaseClient implements ClientModInitializer {
 		//generic
 		TridentHelper.tridentHelper();
         ClientCommandRegistrationCallback.EVENT.register(CommandRegister::registerCommands);
-
-        MapRenderer.run();
 	}
 }
 

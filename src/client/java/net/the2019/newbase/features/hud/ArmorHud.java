@@ -31,12 +31,9 @@ public class ArmorHud {
                 } else {
                     barColor = Color.green.getRGB();
                 }
-                int outlineColor = Color.darkGray.getRGB();
-
                 drawContext.drawTexture(RenderPipelines.GUI_TEXTURED, slot, x-3, y-3, 0, 0, 22, 30 , 22, 30);
 
-                drawContext.fill(x + 2, y + 18, x + 2 + barWidth, y + 20, barColor);
-                drawContext.drawStrokedRectangle(x + 1, y + 17, 15, 4, outlineColor);
+                drawContext.fill(x + 1, y + 18, x + 2 + barWidth, y + 20, barColor);
             }
         }
     }

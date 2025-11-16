@@ -1,6 +1,7 @@
 package net.the2019.newbase.features.render;
 
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.minecraft.block.MapColor;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.RenderPipelines;
@@ -22,11 +23,8 @@ public class MapRenderer {
     private static Identifier mapTextureId;
     private static int tickCounter = 0;
 
-    public static void run() {
-        HudRenderCallback.EVENT.register(MapRenderer::onRenderHud);
-    }
 
-    private static void onRenderHud(DrawContext context, RenderTickCounter tickDelta) {
+    public static void onRenderHud(DrawContext context, RenderTickCounter tickDelta) {
         MinecraftClient client = MinecraftClient.getInstance();
 
         if (client.player == null || client.world == null) {
