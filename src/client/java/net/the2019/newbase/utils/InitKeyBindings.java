@@ -5,7 +5,9 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import net.the2019.newbase.features.generic.YawSet;
+import net.the2019.newbase.features.world.GenWorld;
 import net.the2019.newbase.screens.ChatCoordinatesScreen;
 import net.the2019.newbase.screens.ConfigScreen;
 
@@ -42,6 +44,10 @@ public class InitKeyBindings {
 
         KeyBinding toggleNoRain = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.togglenorain", GLFW.GLFW_KEY_UNKNOWN, NEWBASE_CATEGORY));
 
+        KeyBinding genWorld = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.genworld", GLFW.GLFW_KEY_UNKNOWN, NEWBASE_CATEGORY));
+
+        KeyBinding comapreWorld = KeyBindingHelper.registerKeyBinding(new KeyBinding("newbase.keybinds.compareworld", GLFW.GLFW_KEY_UNKNOWN, NEWBASE_CATEGORY));
+
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (configScreen.wasPressed()) {
                 mc.setScreen(new ConfigScreen(mc.currentScreen, mc.options));
@@ -63,6 +69,12 @@ public class InitKeyBindings {
             }
             if (toggleNoRain.wasPressed()) {
                 saveModuleState(noRain, !readModule(noRain));
+            }
+            if (genWorld.wasPressed()) {
+                GenWorld.initBackgroundWorld(-5338128594962395682L);
+            }
+            if (comapreWorld.wasPressed()) {
+                GenWorld.compareBiomes(new BlockPos(-436, 63, -166));
             }
             if (toggleZoomKey.isPressed()) {
                 if(readModule(toggleZoom)){

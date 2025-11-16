@@ -9,6 +9,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.dimension.DimensionTypes;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -20,12 +21,13 @@ import java.awt.*;
 
 @Mixin(DeathScreen.class)
 public class DeathScreenMixin {
+    @Unique
     private static String deathCoordsMessage = "";
 
     @Inject(at = @At("TAIL"), method = "<init>")
     private void constructor(Text message, boolean isHardcore, CallbackInfo ci) {
-        if(readModule(deathcoords)) {
-           MinecraftClient minecraftClient = MinecraftClient.getInstance();
+        MinecraftClient minecraftClient = MinecraftClient.getInstance();
+        if(readModule(deathcoords) && minecraftClient.player != null && minecraftClient.world != null) {
            Vec3d pos = minecraftClient.player.getEntityPos();
            Identifier dimensionType = minecraftClient.world.getRegistryKey().getValue();
            String dimension = "";

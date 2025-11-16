@@ -51,8 +51,6 @@ A client sided utility mod for Minecraft 1.21.10 using the fabric API.
     - /multiply "Number 1" "Number 2"
     - /divide "Number 1" "Number 2"
 
-
-
 ## Authors
 
 - [@The2019](https://github.com/The2019)
