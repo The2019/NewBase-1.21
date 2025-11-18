@@ -3,18 +3,19 @@ package net.the2019.newbase;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.VanillaHudElements;
 import net.minecraft.util.Identifier;
 import net.the2019.newbase.config.ColorConfig;
 import net.the2019.newbase.config.IntegerConfig;
 import net.the2019.newbase.config.ModuleConfig;
-import net.the2019.newbase.features.world.GenWorld;
-import net.the2019.newbase.utils.CommandRegister;
 import net.the2019.newbase.features.generic.TridentHelper;
 import net.the2019.newbase.features.render.BeeHiveHelper;
-import net.the2019.newbase.features.render.MapRenderer;
+import net.the2019.newbase.features.world.GenWorld;
+import net.the2019.newbase.features.world.WorldDiffSystem;
 import net.the2019.newbase.render.HudRender;
+import net.the2019.newbase.utils.CommandRegister;
 import net.the2019.newbase.utils.InitKeyBindings;
 import net.the2019.newbase.utils.PermissionLevel;
 
@@ -43,6 +44,11 @@ public class NewBaseClient implements ClientModInitializer {
 		TridentHelper.tridentHelper();
         ClientCommandRegistrationCallback.EVENT.register(CommandRegister::registerCommands);
         registerWorldEvents();
+
+        //World
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            WorldDiffSystem.tick();
+        });
 	}
 
     private void registerWorldEvents() {

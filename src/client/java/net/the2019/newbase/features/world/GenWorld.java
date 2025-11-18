@@ -6,7 +6,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.GlobalPos;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionType;
+import net.minecraft.world.WorldProperties;
 
 public class GenWorld {
 
@@ -32,7 +32,7 @@ public class GenWorld {
         );
 
         // Set initial spawn point
-        properties.setSpawnPoint(new net.minecraft.world.WorldProperties.SpawnPoint(
+        properties.setSpawnPoint(new WorldProperties.SpawnPoint(
                 new GlobalPos(World.OVERWORLD,new BlockPos(0, 64, 0)),
                 0.0F,
                 0.0F
@@ -41,36 +41,20 @@ public class GenWorld {
         // Get dimension type from current world
         var dimensionType = client.world.getDimensionEntry();
 
-        // Create the background world
-        ClientWorld world = new ClientWorld(
+        return new ClientWorld(
                 client.getNetworkHandler(),
                 properties,
                 World.OVERWORLD,
                 dimensionType,
-                2,                      // loadDistance
-                2,                      // simulationDistance
+                2,
+                2,
                 client.worldRenderer,
-                false,                  // debugWorld
+                false,
                 seed,
-                64                      // seaLevel
+                64
         );
-
-        return world;
     }
 
-    /**
-     * Creates a background world with a random seed
-     * @return A new ClientWorld instance with random seed
-     */
-    public static ClientWorld createWorldRandom() {
-        long randomSeed = System.currentTimeMillis();
-        return createWorld(randomSeed);
-    }
-
-    /**
-     * Initialize and store a background world
-     * @param seed The seed to use
-     */
     public static void initBackgroundWorld(long seed) {
         backgroundWorld = createWorld(seed);
         System.out.println("Background world created with seed: " + seed);
